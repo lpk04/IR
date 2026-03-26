@@ -1,0 +1,10 @@
+Q1	cheap sushi near me
+Q2	bad service restaurant
+Q3	friendly staff cafe
+Q4	best pizza in town
+Q5	clean hotel room
+Q6	spicy noodles
+Q7	cheap coffee shop
+Q8	good food but slow service
+Q9	affordable restaurant
+Q10	quiet place to eat

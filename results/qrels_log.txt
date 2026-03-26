@@ -1,0 +1,13 @@
+Total queries: 10
+Total docs: 100000
+
+Q1: 1 relevant docs
+Q2: 744 relevant docs
+Q3: 132 relevant docs
+Q4: 93 relevant docs
+Q5: 739 relevant docs
+Q6: 0 relevant docs
+Q7: 16 relevant docs
+Q8: 8071 relevant docs
+Q9: 0 relevant docs
+Q10: 69 relevant docs

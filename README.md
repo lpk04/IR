@@ -17,6 +17,8 @@ nltk.download('averaged_perceptron_tagger_eng')
 -chuẩn bị dl prepare.py 
 -generate_queries.py
 
+generate_qrels.py
+
 -index_tfidf.py 
 -search_tfidf.py
 
@@ -32,3 +34,12 @@ python search_bm25.py 2.0 0.75
 
 
 
+git add .
+git commit -m "update"
+git push
+
+
+python src/generate_qrels.py
+python src/search_tfidf.py
+python src/search_bm25.py 2.0 1.5 0.75
+python src/evaluate_results.py

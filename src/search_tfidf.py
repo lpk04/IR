@@ -2,7 +2,7 @@ import pickle
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
-from config import INDEX_DIR, RUNS_DIR, QUERY_FILE
+from config import INDEX_DIR, RUNS_DIR, QUERY_TEXT_FILE
 from prepare import preprocess_text
 
 RUNS_DIR.mkdir(parents=True, exist_ok=True)
@@ -17,7 +17,7 @@ def load():
 
 def load_queries():
     queries = []
-    with open(QUERY_FILE, "r", encoding="utf-8") as f:
+    with open(QUERY_TEXT_FILE, "r", encoding="utf-8") as f:
         for line in f:
             qid, q = line.strip().split("\t")
             queries.append((qid, q))

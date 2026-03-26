@@ -1,22 +1,27 @@
 ===== EVALUATION RESULTS =====
 
 run_bm25_1.2_0.75.txt:
-  Precision@10: 0.2200
-  Recall@10:    0.4400
-  F1@10:        0.2933
+  Precision@10: 0.5500
+  Recall@10:    0.0284
+  F1@10:        0.0517
 
 run_bm25_1.5_0.75.txt:
-  Precision@10: 0.2200
-  Recall@10:    0.4400
-  F1@10:        0.2933
+  Precision@10: 0.5300
+  Recall@10:    0.0255
+  F1@10:        0.0467
 
 run_bm25_2.0_0.75.txt:
-  Precision@10: 0.2200
-  Recall@10:    0.4400
-  F1@10:        0.2933
+  Precision@10: 0.5200
+  Recall@10:    0.0255
+  F1@10:        0.0466
 
 run_tfidf.txt:
-  Precision@10: 0.5000
-  Recall@10:    1.0000
-  F1@10:        0.6667
+  Precision@10: 0.3200
+  Recall@10:    0.0106
+  F1@10:        0.0196
+
+run_tfidf_update.txt:
+  Precision@10: 0.0100
+  Recall@10:    0.0000
+  F1@10:        0.0000
 

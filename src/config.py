@@ -53,7 +53,7 @@ RESULTS_DIR = ROOT / "results"
 # QUERIES
 # =========================
 QUERY_DIR = ROOT / "queries_Result"
-QUERY_FILE = QUERY_DIR / "queries.txt"
+QUERY_TEXT_FILE = ROOT / "queries.txt"
 
 # =========================
 # QRELS

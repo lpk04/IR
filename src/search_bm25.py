@@ -2,7 +2,7 @@ import pickle
 import numpy as np
 import sys
 
-from config import INDEX_DIR, RUNS_DIR, QUERY_FILE
+from config import INDEX_DIR, RUNS_DIR, QUERY_TEXT_FILE
 from prepare import preprocess_text
 
 RUNS_DIR.mkdir(parents=True, exist_ok=True)
@@ -16,14 +16,14 @@ def load(k1, b):
 
 def load_queries():
     queries = []
-    with open(QUERY_FILE, "r", encoding="utf-8") as f:
+    with open(QUERY_TEXT_FILE, "r", encoding="utf-8") as f:
         for line in f:
             qid, q = line.strip().split("\t")
             queries.append((qid, q))
     return queries
 
 
-def run(k1, b):   # ❌ bỏ default
+def run(k1, b):  
     bm25, ids = load(k1, b)
     queries = load_queries()
 

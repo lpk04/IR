@@ -112,8 +112,6 @@ def evaluate_all():
                     f"  Recall@10:    {r:.4f}\n"
                     f"  F1@10:        {f1_score:.4f}\n\n"
                 )
-
-                print(line)
                 f.write(line)
 
     print(f"✅ Evaluation saved → {result_file}")
