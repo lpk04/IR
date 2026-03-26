@@ -1,0 +1,11 @@
+numpy
+pandas
+scikit-learn
+scipy
+joblib
+nltk
+sentence-transformers
+tqdm
+streamlit
+rank-bm25
+wordcloud
