@@ -1,19 +1,56 @@
 import pickle
 import numpy as np
-import sys
+import argparse
 
-from config import INDEX_DIR, RUNS_DIR, QUERY_TEXT_FILE
-from prepare import preprocess_text
+from config import (
+    QUERY_TEXT_FILE,
+    RUNS_SEARCH_BM25_DIR,
+    BM25_SEARCH_TRACE_DIR,
+    get_bm25_paths,
+    get_bm25_run_paths
+)
 
-RUNS_DIR.mkdir(parents=True, exist_ok=True)
+from prepare_data import preprocess_text
 
 
-def load(k1, b):
-    bm25 = pickle.load(open(INDEX_DIR / f"bm25_{k1}_{b}.pkl", "rb"))
-    ids = pickle.load(open(INDEX_DIR / "bm25_doc_ids.pkl", "rb"))
-    return bm25, ids
+# =========================
+# PARSE ARGUMENT
+# =========================
+def parse_args():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--k1", type=float, required=True)
+    parser.add_argument("--b", type=float, required=True)
+
+    return parser.parse_args()
 
 
+# =========================
+# ENSURE DIR
+# =========================
+def ensure_dir(path):
+    if not path.exists():
+        path.mkdir(parents=True)
+    else:
+        print(f"⚠️ Exists: {path}")
+
+
+# =========================
+# LOAD INDEX
+# =========================
+def load_index(paths):
+    with open(paths["model"], "rb") as f:
+        bm25 = pickle.load(f)
+
+    with open(paths["ids"], "rb") as f:
+        doc_ids = pickle.load(f)
+
+    return bm25, doc_ids
+
+
+# =========================
+# LOAD QUERIES
+# =========================
 def load_queries():
     queries = []
     with open(QUERY_TEXT_FILE, "r", encoding="utf-8") as f:
@@ -23,31 +60,56 @@ def load_queries():
     return queries
 
 
-def run(k1, b):  
-    bm25, ids = load(k1, b)
+# =========================
+# RUN SEARCH
+# =========================
+def run_search(k1, b, top_k=10):
+    index_paths = get_bm25_paths(k1, b)
+    run_paths = get_bm25_run_paths(k1, b)
+
+    ensure_dir(RUNS_SEARCH_BM25_DIR)
+    ensure_dir(BM25_SEARCH_TRACE_DIR)
+
+    bm25, doc_ids = load_index(index_paths)
     queries = load_queries()
 
-    out_file = RUNS_DIR / f"run_bm25_{k1}_{b}.txt"
+    with open(run_paths["run"], "w", encoding="utf-8") as run_f, \
+         open(run_paths["trace"], "w", encoding="utf-8") as trace_f:
 
-    with open(out_file, "w", encoding="utf-8") as f:
+        trace_f.write(f"===== SEARCH BM25 (k1={k1}, b={b}) =====\n\n")
+
         for qid, q in queries:
-            tokens = preprocess_text(q).split()
+            q_clean = preprocess_text(q)
+            tokens = q_clean.split()
+
             scores = bm25.get_scores(tokens)
+            idx = np.argsort(scores)[::-1][:top_k]
 
-            idx = np.argsort(scores)[::-1][:10]
-
+            # =========================
+            # WRITE RUN
+            # =========================
             for rank, i in enumerate(idx, 1):
-                f.write(f"{qid} Q0 {ids[i]} {rank} {scores[i]:.4f} BM25\n")
+                run_f.write(
+                    f"{qid} Q0 {doc_ids[i]} {rank} {scores[i]:.4f} BM25\n"
+                )
 
-    print(f"✅ BM25 run → {out_file}")
+            # =========================
+            # TRACE
+            # =========================
+            trace_f.write(f"Query: {q}\n")
+            trace_f.write(f"Clean: {q_clean}\n")
+            trace_f.write(f"Tokens: {tokens}\n")
 
+            for rank, i in enumerate(idx[:5], 1):
+                trace_f.write(
+                    f"  Rank {rank}: Doc {doc_ids[i]} | Score: {scores[i]:.4f}\n"
+                )
 
+            trace_f.write("\n" + "-" * 50 + "\n\n")
+
+# =========================
+# MAIN
+# =========================
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: python src/search_bm25.py <k1> <b>")
-        exit()
-
-    k1 = float(sys.argv[1])
-    b = float(sys.argv[2])
-
-    run(k1, b)
+    args = parse_args()
+    run_search(args.k1, args.b)

@@ -1,0 +1,28 @@
+===== DATA ANALYSIS =====
+
+Total documents: 100000
+Average length: 49.50
+Max length: 518
+Min length: 0
+
+Top 20 words:
+food: 56039
+good: 55779
+place: 55314
+get: 54320
+great: 47781
+time: 38157
+like: 34372
+service: 33572
+order: 32631
+come: 32389
+one: 31020
+make: 28834
+back: 27506
+would: 26966
+go: 25970
+really: 24534
+well: 23241
+try: 22690
+take: 21532
+love: 21471

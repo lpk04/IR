@@ -1,0 +1,9 @@
+===== BM25 INDEX (k1=2.0, b=0.75) =====
+
+Total documents: 100000
+Average doc length: 49.50
+
+Sample documents (first 3):
+Doc 0: decide eat aware go take hour begin end try multiple
+Doc 1: take lot spin class year nothing compare class body cycle
+Doc 2: family diner buffet eclectic assortment large chicken leg fry jalape

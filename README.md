@@ -14,24 +14,33 @@ nltk.download('averaged_perceptron_tagger_eng')
 -->exit() 
 --cài thư viện pip install -r requirements.txt
 -tải dl
--chuẩn bị dl prepare.py 
--generate_queries.py
-
-generate_qrels.py
+-chuẩn bị dl prepare_data.py 
 
 -index_tfidf.py 
+python src/index_tfidf.py --ngram 11 --sublinear false
+python src/index_tfidf.py --ngram 11 --sublinear true
+python src/index_tfidf.py --ngram 12 --sublinear false
+python src/index_tfidf.py --ngram 12 --sublinear true
+
+
 -search_tfidf.py
+python src/search_tfidf.py --ngram 11 --sublinear false
+python src/search_tfidf.py --ngram 11 --sublinear true
+python src/search_tfidf.py --ngram 12 --sublinear false
+python src/search_tfidf.py --ngram 12 --sublinear true
 
-python index_bm25.py 1.2 0.75
-python index_bm25.py 1.5 0.75
-python index_bm25.py 2.0 0.75
 
-python search_bm25.py 1.2 0.75
-python search_bm25.py 1.5 0.75
-python search_bm25.py 2.0 0.75
+-index_bm25
+python src/index_bm25.py --k1 1.2 --b 0.75
+python src/index_bm25.py --k1 1.5 --b 0.75
+python src/index_bm25.py --k1 2.0 --b 0.75
 
--compare.py
+-search_bm25
+python src/search_bm25.py --k1 1.2 --b 0.75
+python src/search_bm25.py --k1 1.5 --b 0.75
+python src/search_bm25.py --k1 2.0 --b 0.75
 
+-generate_queries.py
 
 
 git add .
@@ -39,7 +48,16 @@ git commit -m "update"
 git push
 
 
+# 1. Generate qrels
 python src/generate_qrels.py
+
+# 2. Search TF-IDF
 python src/search_tfidf.py
-python src/search_bm25.py 2.0 1.5 0.75
+
+# 3. Search BM25 (nhiều config)
+python src/search_bm25.py 1.2 0.75
+python src/search_bm25.py 1.5 0.75
+python src/search_bm25.py 2.0 0.75
+
+# 4. Evaluate
 python src/evaluate_results.py

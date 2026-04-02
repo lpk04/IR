@@ -1,0 +1,52 @@
+===== TF-IDF (1, 1) | sublinear=True =====
+
+>> vectorizer (first 5 vocab)
+0: aaa
+1: ability
+2: able
+3: absolute
+4: absolutely
+
+>> matrix (first 5 docs)
+
+Doc 0:
+  (1192, decide): 0.1503
+  (1425, eat): 0.1155
+  (290, aware): 0.2422
+  (1922, go): 0.0943
+  (4397, take): 0.1722
+
+Doc 1:
+  (4397, take): 0.0585
+  (2568, like): 0.0505
+  (2697, many): 0.0770
+  (4867, way): 0.1200
+  (2626, lot): 0.0724
+
+Doc 2:
+  (1931, good): 0.1193
+  (2616, long): 0.1304
+  (1285, diner): 0.1952
+  (2626, lot): 0.1227
+  (1631, family): 0.1451
+
+Doc 3:
+  (4648, try): 0.1182
+  (4959, wow): 0.2211
+  (4992, yummy): 0.2115
+  (1273, different): 0.2922
+  (1216, delicious): 0.1318
+
+Doc 4:
+  (1425, eat): 0.0879
+  (4648, try): 0.0749
+  (4534, time): 0.0636
+  (2568, like): 0.1593
+  (1931, good): 0.0550
+
+>> doc_ids (first 5)
+0: 0
+1: 1
+2: 2
+3: 3
+4: 4

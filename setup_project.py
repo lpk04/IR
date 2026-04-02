@@ -9,10 +9,15 @@ ROOT = r"D:\IR\demo"
 # FOLDER STRUCTURE
 # =========================
 folders = [
-    "data",
-    "src",
     "app",
+    "data",
+    "data/processed",
+    "index",
     "models",
+    "notebooks",
+    "results",
+    "run",
+    "src",
     "trace",
 ]
 
@@ -23,38 +28,50 @@ files = [
     "main.py",
     "requirements.txt",
     "README.md",
-    
-    # src
- 
+
     # app
     "app/app.py",
 
     # notebooks
-    "notebooks/demo.ipynb"
+    "notebooks/demo.ipynb",
+
+    # src core
+    "src/config.py",
 ]
 
 # =========================
 # CREATE FOLDERS
 # =========================
+print("📁 Creating folders...\n")
+
 for folder in folders:
     path = os.path.join(ROOT, folder)
-    os.makedirs(path, exist_ok=True)
-    print(f"Created folder: {path}")
+
+    if not os.path.exists(path):
+        os.makedirs(path)
+        print(f"✅ Created folder: {path}")
+    else:
+        print(f"⚠️ Already exists: {path}")
 
 # =========================
 # CREATE FILES
 # =========================
+print("\n📄 Creating files...\n")
+
 for file in files:
     path = os.path.join(ROOT, file)
 
     # tạo folder cha nếu chưa có
-    os.makedirs(os.path.dirname(path), exist_ok=True)
+    parent_dir = os.path.dirname(path)
+    if not os.path.exists(parent_dir):
+        os.makedirs(parent_dir)
 
-    # tạo file rỗng
+    # tạo file nếu chưa tồn tại
     if not os.path.exists(path):
         with open(path, "w", encoding="utf-8") as f:
             pass
+        print(f"✅ Created file: {path}")
+    else:
+        print(f"⚠️ Already exists: {path}")
 
-    print(f"Created file: {path}")
-
-print("\n✅ Project structure created successfully!")
+print("\n🚀 Project setup completed!")

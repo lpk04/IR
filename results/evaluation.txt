@@ -14,6 +14,7 @@ run_bm25_2.0_0.75.txt:
   Precision@10: 0.5200
   Recall@10:    0.0255
   F1@10:        0.0466
+  
 
 run_tfidf.txt:
   Precision@10: 0.3200

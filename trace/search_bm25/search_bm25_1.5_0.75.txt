@@ -1,0 +1,112 @@
+===== SEARCH BM25 (k1=1.5, b=0.75) =====
+
+Query: cheap sushi near me
+Clean: cheap sushi near
+Tokens: ['cheap', 'sushi', 'near']
+  Rank 1: Doc 50586 | Score: 12.4782
+  Rank 2: Doc 4558 | Score: 12.2605
+  Rank 3: Doc 1886 | Score: 12.1286
+  Rank 4: Doc 48234 | Score: 11.9862
+  Rank 5: Doc 442 | Score: 11.8734
+
+--------------------------------------------------
+
+Query: bad service restaurant
+Clean: bad service restaurant
+Tokens: ['bad', 'service', 'restaurant']
+  Rank 1: Doc 42549 | Score: 8.7208
+  Rank 2: Doc 74623 | Score: 8.3760
+  Rank 3: Doc 45944 | Score: 8.3710
+  Rank 4: Doc 99034 | Score: 8.1041
+  Rank 5: Doc 94148 | Score: 8.0087
+
+--------------------------------------------------
+
+Query: friendly staff cafe
+Clean: friendly staff cafe
+Tokens: ['friendly', 'staff', 'cafe']
+  Rank 1: Doc 5681 | Score: 12.0989
+  Rank 2: Doc 4896 | Score: 11.9819
+  Rank 3: Doc 7742 | Score: 11.7555
+  Rank 4: Doc 99476 | Score: 11.2821
+  Rank 5: Doc 42040 | Score: 11.1327
+
+--------------------------------------------------
+
+Query: best pizza in town
+Clean: best pizza town
+Tokens: ['best', 'pizza', 'town']
+  Rank 1: Doc 89863 | Score: 12.9893
+  Rank 2: Doc 79744 | Score: 12.8707
+  Rank 3: Doc 89157 | Score: 12.4346
+  Rank 4: Doc 91968 | Score: 12.2628
+  Rank 5: Doc 99801 | Score: 12.2628
+
+--------------------------------------------------
+
+Query: clean hotel room
+Clean: clean hotel room
+Tokens: ['clean', 'hotel', 'room']
+  Rank 1: Doc 28063 | Score: 14.7695
+  Rank 2: Doc 33715 | Score: 14.3654
+  Rank 3: Doc 82113 | Score: 14.2363
+  Rank 4: Doc 4698 | Score: 14.2265
+  Rank 5: Doc 31405 | Score: 14.1513
+
+--------------------------------------------------
+
+Query: spicy noodles
+Clean: spicy noodle
+Tokens: ['spicy', 'noodle']
+  Rank 1: Doc 52780 | Score: 13.7677
+  Rank 2: Doc 85260 | Score: 13.5699
+  Rank 3: Doc 24889 | Score: 13.0474
+  Rank 4: Doc 89029 | Score: 12.9116
+  Rank 5: Doc 82951 | Score: 12.6223
+
+--------------------------------------------------
+
+Query: cheap coffee shop
+Clean: cheap coffee shop
+Tokens: ['cheap', 'coffee', 'shop']
+  Rank 1: Doc 70268 | Score: 11.9873
+  Rank 2: Doc 20262 | Score: 11.7241
+  Rank 3: Doc 75415 | Score: 11.4761
+  Rank 4: Doc 93556 | Score: 11.2325
+  Rank 5: Doc 16859 | Score: 11.1326
+
+--------------------------------------------------
+
+Query: good food but slow service
+Clean: good food slow service
+Tokens: ['good', 'food', 'slow', 'service']
+  Rank 1: Doc 64736 | Score: 9.9717
+  Rank 2: Doc 69185 | Score: 9.9298
+  Rank 3: Doc 73192 | Score: 9.9298
+  Rank 4: Doc 74613 | Score: 9.1985
+  Rank 5: Doc 303 | Score: 9.1202
+
+--------------------------------------------------
+
+Query: affordable restaurant
+Clean: affordable restaurant
+Tokens: ['affordable', 'restaurant']
+  Rank 1: Doc 57854 | Score: 10.5026
+  Rank 2: Doc 45565 | Score: 9.9231
+  Rank 3: Doc 44909 | Score: 9.8259
+  Rank 4: Doc 82471 | Score: 9.6568
+  Rank 5: Doc 83206 | Score: 9.6568
+
+--------------------------------------------------
+
+Query: quiet place to eat
+Clean: quiet place eat
+Tokens: ['quiet', 'place', 'eat']
+  Rank 1: Doc 32290 | Score: 9.8705
+  Rank 2: Doc 10242 | Score: 9.4835
+  Rank 3: Doc 1739 | Score: 9.4723
+  Rank 4: Doc 50677 | Score: 9.2241
+  Rank 5: Doc 65807 | Score: 9.1168
+
+--------------------------------------------------
+

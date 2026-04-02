@@ -1,0 +1,102 @@
+===== SEARCH TF-IDF (1, 1) sub=True =====
+
+Query: cheap sushi near me
+Clean: cheap sushi near
+  Rank 1: Doc 1886 | Score: 0.5230
+  Rank 2: Doc 50586 | Score: 0.4690
+  Rank 3: Doc 4558 | Score: 0.4522
+  Rank 4: Doc 442 | Score: 0.4488
+  Rank 5: Doc 48234 | Score: 0.4142
+
+--------------------------------------------------
+
+Query: bad service restaurant
+Clean: bad service restaurant
+  Rank 1: Doc 70504 | Score: 0.6149
+  Rank 2: Doc 74623 | Score: 0.5806
+  Rank 3: Doc 45944 | Score: 0.4525
+  Rank 4: Doc 50352 | Score: 0.4376
+  Rank 5: Doc 53315 | Score: 0.4295
+
+--------------------------------------------------
+
+Query: friendly staff cafe
+Clean: friendly staff cafe
+  Rank 1: Doc 93071 | Score: 0.5731
+  Rank 2: Doc 7742 | Score: 0.5212
+  Rank 3: Doc 98828 | Score: 0.4726
+  Rank 4: Doc 99476 | Score: 0.4720
+  Rank 5: Doc 20389 | Score: 0.4576
+
+--------------------------------------------------
+
+Query: best pizza in town
+Clean: best pizza town
+  Rank 1: Doc 42237 | Score: 0.7326
+  Rank 2: Doc 79744 | Score: 0.5993
+  Rank 3: Doc 91968 | Score: 0.5919
+  Rank 4: Doc 93244 | Score: 0.5879
+  Rank 5: Doc 89863 | Score: 0.5862
+
+--------------------------------------------------
+
+Query: clean hotel room
+Clean: clean hotel room
+  Rank 1: Doc 52177 | Score: 0.6439
+  Rank 2: Doc 1049 | Score: 0.6437
+  Rank 3: Doc 4698 | Score: 0.5887
+  Rank 4: Doc 28063 | Score: 0.5621
+  Rank 5: Doc 20494 | Score: 0.5308
+
+--------------------------------------------------
+
+Query: spicy noodles
+Clean: spicy noodle
+  Rank 1: Doc 24889 | Score: 0.6054
+  Rank 2: Doc 82951 | Score: 0.5804
+  Rank 3: Doc 71081 | Score: 0.4886
+  Rank 4: Doc 71342 | Score: 0.4531
+  Rank 5: Doc 89029 | Score: 0.4497
+
+--------------------------------------------------
+
+Query: cheap coffee shop
+Clean: cheap coffee shop
+  Rank 1: Doc 93778 | Score: 0.4981
+  Rank 2: Doc 646 | Score: 0.4616
+  Rank 3: Doc 16859 | Score: 0.4600
+  Rank 4: Doc 10928 | Score: 0.4583
+  Rank 5: Doc 27865 | Score: 0.4496
+
+--------------------------------------------------
+
+Query: good food but slow service
+Clean: good food slow service
+  Rank 1: Doc 27418 | Score: 0.6863
+  Rank 2: Doc 74613 | Score: 0.6383
+  Rank 3: Doc 69185 | Score: 0.6209
+  Rank 4: Doc 49739 | Score: 0.6085
+  Rank 5: Doc 73192 | Score: 0.6056
+
+--------------------------------------------------
+
+Query: affordable restaurant
+Clean: affordable restaurant
+  Rank 1: Doc 57854 | Score: 0.6274
+  Rank 2: Doc 45565 | Score: 0.5656
+  Rank 3: Doc 52789 | Score: 0.4891
+  Rank 4: Doc 70774 | Score: 0.4869
+  Rank 5: Doc 82215 | Score: 0.4744
+
+--------------------------------------------------
+
+Query: quiet place to eat
+Clean: quiet place eat
+  Rank 1: Doc 82252 | Score: 0.4644
+  Rank 2: Doc 58477 | Score: 0.4410
+  Rank 3: Doc 48292 | Score: 0.4318
+  Rank 4: Doc 7748 | Score: 0.4179
+  Rank 5: Doc 1429 | Score: 0.4088
+
+--------------------------------------------------
+
