@@ -41,23 +41,37 @@ python src/search_bm25.py --k1 1.5 --b 0.75
 python src/search_bm25.py --k1 2.0 --b 0.75
 
 -generate_queries.py
+điều kiện
++if common >= max(2, int(0.5 * len(q_tokens))):
+    rel = 1
+match số từ vd 3 từ phải match 2
+
++ratio = common / len(q_tokens)
+
+if ratio >= 0.7:
+    rel = 1
+match theo %
+
+
+-evaluate_results.py 
+
+
+-search_bm25_sentiment.py --k1 2.0 --b 0.75
+
+so sánh các mô hình khi thêm sentiment vào
+sentiment chạy ranking thay đổi nhưng f1 recall đồ k thay đổi do
+model ổn
+rerank ổn  
+nhưng metric thì quá thấp chưa đủ nhạy
+
+-evaluate_ndcg_results.py
+Precision ↑ (tốt hơn)
+NDCG ↑ (ranking tốt hơn)
+Recall giữ nguyên
+
+
 
 
 git add .
 git commit -m "update"
 git push
-
-
-# 1. Generate qrels
-python src/generate_qrels.py
-
-# 2. Search TF-IDF
-python src/search_tfidf.py
-
-# 3. Search BM25 (nhiều config)
-python src/search_bm25.py 1.2 0.75
-python src/search_bm25.py 1.5 0.75
-python src/search_bm25.py 2.0 0.75
-
-# 4. Evaluate
-python src/evaluate_results.py

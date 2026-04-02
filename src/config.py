@@ -130,3 +130,11 @@ def get_bm25_run_paths(k1, b):
 # LOG
 # =========================
 LOG_FILE = RESULTS_DIR / "qrels_log.txt"
+
+# =========================
+# QRELS
+# =========================
+QRELS_KEYWORD = RESULTS_DIR / "qrels_keyword.txt"
+QRELS_COUNT   = RESULTS_DIR / "qrels_count.txt"
+QRELS_RATIO   = RESULTS_DIR / "qrels_ratio.txt"
+LOG_FILE      = RESULTS_DIR / "qrels_log.txt"

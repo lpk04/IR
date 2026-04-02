@@ -1,0 +1,92 @@
+===== BM25 + Sentiment (alpha=0.2) =====
+
+Query: cheap sushi near me
+  Rank 1: Doc 50586 | Score: 13.9261 | Sent: positive
+  Rank 2: Doc 4558 | Score: 13.5401 | Sent: positive
+  Rank 3: Doc 1886 | Score: 13.3686 | Sent: positive
+  Rank 4: Doc 48234 | Score: 13.0459 | Sent: positive
+  Rank 5: Doc 55076 | Score: 12.9700 | Sent: positive
+
+--------------------------------------------------
+
+Query: bad service restaurant
+  Rank 1: Doc 42549 | Score: 9.2531 | Sent: negative
+  Rank 2: Doc 45944 | Score: 8.7904 | Sent: negative
+  Rank 3: Doc 74623 | Score: 8.7805 | Sent: negative
+  Rank 4: Doc 89703 | Score: 8.5331 | Sent: neutral
+  Rank 5: Doc 33484 | Score: 8.4724 | Sent: positive
+
+--------------------------------------------------
+
+Query: friendly staff cafe
+  Rank 1: Doc 5681 | Score: 13.1834 | Sent: positive
+  Rank 2: Doc 4896 | Score: 13.0354 | Sent: positive
+  Rank 3: Doc 7742 | Score: 12.7036 | Sent: positive
+  Rank 4: Doc 99476 | Score: 12.1129 | Sent: positive
+  Rank 5: Doc 43666 | Score: 11.9661 | Sent: positive
+
+--------------------------------------------------
+
+Query: best pizza in town
+  Rank 1: Doc 89863 | Score: 14.3302 | Sent: positive
+  Rank 2: Doc 79744 | Score: 14.2284 | Sent: positive
+  Rank 3: Doc 89157 | Score: 13.6276 | Sent: positive
+  Rank 4: Doc 91968 | Score: 13.3118 | Sent: positive
+  Rank 5: Doc 99801 | Score: 13.3118 | Sent: positive
+
+--------------------------------------------------
+
+Query: clean hotel room
+  Rank 1: Doc 28063 | Score: 16.2673 | Sent: positive
+  Rank 2: Doc 33715 | Score: 15.7374 | Sent: positive
+  Rank 3: Doc 82113 | Score: 15.7011 | Sent: positive
+  Rank 4: Doc 4698 | Score: 15.5642 | Sent: positive
+  Rank 5: Doc 31405 | Score: 15.4624 | Sent: positive
+
+--------------------------------------------------
+
+Query: spicy noodles
+  Rank 1: Doc 52780 | Score: 15.3120 | Sent: positive
+  Rank 2: Doc 85260 | Score: 14.6419 | Sent: negative
+  Rank 3: Doc 24889 | Score: 14.3952 | Sent: positive
+  Rank 4: Doc 89029 | Score: 14.2186 | Sent: positive
+  Rank 5: Doc 82951 | Score: 13.8436 | Sent: positive
+
+--------------------------------------------------
+
+Query: cheap coffee shop
+  Rank 1: Doc 70268 | Score: 13.2371 | Sent: negative
+  Rank 2: Doc 20262 | Score: 12.9625 | Sent: positive
+  Rank 3: Doc 75415 | Score: 12.9115 | Sent: positive
+  Rank 4: Doc 93556 | Score: 12.5671 | Sent: positive
+  Rank 5: Doc 1628 | Score: 12.3364 | Sent: positive
+
+--------------------------------------------------
+
+Query: good food but slow service
+  Rank 1: Doc 73192 | Score: 11.0726 | Sent: positive
+  Rank 2: Doc 64736 | Score: 11.0094 | Sent: neutral
+  Rank 3: Doc 69185 | Score: 10.8726 | Sent: neutral
+  Rank 4: Doc 74613 | Score: 10.0904 | Sent: positive
+  Rank 5: Doc 2965 | Score: 9.8031 | Sent: neutral
+
+--------------------------------------------------
+
+Query: affordable restaurant
+  Rank 1: Doc 57854 | Score: 11.4606 | Sent: positive
+  Rank 2: Doc 45565 | Score: 10.7282 | Sent: positive
+  Rank 3: Doc 44909 | Score: 10.6793 | Sent: positive
+  Rank 4: Doc 83206 | Score: 10.3966 | Sent: positive
+  Rank 5: Doc 25171 | Score: 10.3966 | Sent: positive
+
+--------------------------------------------------
+
+Query: quiet place to eat
+  Rank 1: Doc 32290 | Score: 10.6470 | Sent: positive
+  Rank 2: Doc 50677 | Score: 10.3752 | Sent: positive
+  Rank 3: Doc 10242 | Score: 10.1685 | Sent: positive
+  Rank 4: Doc 1739 | Score: 10.0784 | Sent: positive
+  Rank 5: Doc 58477 | Score: 9.8334 | Sent: positive
+
+--------------------------------------------------
+

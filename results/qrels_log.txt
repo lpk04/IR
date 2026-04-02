@@ -1,13 +1,10 @@
-Total queries: 10
-Total docs: 100000
-
-Q1: 6902 relevant docs
-Q2: 40839 relevant docs
-Q3: 24408 relevant docs
-Q4: 22511 relevant docs
-Q5: 12999 relevant docs
-Q6: 4212 relevant docs
-Q7: 10631 relevant docs
-Q8: 66408 relevant docs
-Q9: 14489 relevant docs
-Q10: 44053 relevant docs
+Q1: keyword=6902, count=227, ratio=1
+Q2: keyword=40839, count=8202, ratio=744
+Q3: keyword=24408, count=6602, ratio=132
+Q4: keyword=22511, count=2366, ratio=93
+Q5: keyword=12999, count=2772, ratio=739
+Q6: keyword=4212, count=326, ratio=326
+Q7: keyword=10631, count=954, ratio=16
+Q8: keyword=66408, count=30438, ratio=8071
+Q9: keyword=14489, count=161, ratio=161
+Q10: keyword=44053, count=6332, ratio=69

@@ -1,7 +1,7 @@
 from collections import defaultdict
 from pathlib import Path
 
-RESULT_FILE = r"D:\IR\demo\runs\run_bm25_2.0_0.75.txt"
+RESULT_FILE = Path(r"D:\IR\demo\run\runs_search_bm25\bm25_2.0_0.75.txt")
 OUTPUT_FILE = Path(r"D:\IR\demo\results\top10_results.txt")
 
 

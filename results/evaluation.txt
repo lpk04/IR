@@ -1,28 +1,149 @@
 ===== EVALUATION RESULTS =====
 
-run_bm25_1.2_0.75.txt:
-  Precision@10: 0.5500
-  Recall@10:    0.0284
-  F1@10:        0.0517
+===== QRELS: KEYWORD =====
 
-run_bm25_1.5_0.75.txt:
-  Precision@10: 0.5300
-  Recall@10:    0.0255
-  F1@10:        0.0467
+---- TF-IDF ----
 
-run_bm25_2.0_0.75.txt:
-  Precision@10: 0.5200
-  Recall@10:    0.0255
-  F1@10:        0.0466
-  
+tfidf_1_1_nosub.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0008
+  F1@10:        0.0015
 
-run_tfidf.txt:
-  Precision@10: 0.3200
-  Recall@10:    0.0106
-  F1@10:        0.0196
+tfidf_1_1_sub.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0008
+  F1@10:        0.0015
 
-run_tfidf_update.txt:
-  Precision@10: 0.0100
-  Recall@10:    0.0000
-  F1@10:        0.0000
+tfidf_1_2_nosub.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0008
+  F1@10:        0.0015
+
+tfidf_1_2_sub.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0008
+  F1@10:        0.0015
+
+---- BM25 ----
+
+bm25_1.2_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0008
+  F1@10:        0.0015
+
+bm25_1.5_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0008
+  F1@10:        0.0015
+
+bm25_2.0_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0008
+  F1@10:        0.0015
+
+bm25_sentiment_2.0_0.75_a0.2.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0008
+  F1@10:        0.0015
+
+
+============================================================
+
+===== QRELS: COUNT =====
+
+---- TF-IDF ----
+
+tfidf_1_1_nosub.txt:
+  Precision@10: 0.8100
+  Recall@10:    0.0099
+  F1@10:        0.0191
+
+tfidf_1_1_sub.txt:
+  Precision@10: 0.8500
+  Recall@10:    0.0116
+  F1@10:        0.0224
+
+tfidf_1_2_nosub.txt:
+  Precision@10: 0.8100
+  Recall@10:    0.0073
+  F1@10:        0.0141
+
+tfidf_1_2_sub.txt:
+  Precision@10: 0.8700
+  Recall@10:    0.0104
+  F1@10:        0.0201
+
+---- BM25 ----
+
+bm25_1.2_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0160
+  F1@10:        0.0306
+
+bm25_1.5_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0160
+  F1@10:        0.0306
+
+bm25_2.0_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0160
+  F1@10:        0.0306
+
+bm25_sentiment_2.0_0.75_a0.2.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0160
+  F1@10:        0.0306
+
+
+============================================================
+
+===== QRELS: RATIO =====
+
+---- TF-IDF ----
+
+tfidf_1_1_nosub.txt:
+  Precision@10: 0.8100
+  Recall@10:    0.0100
+  F1@10:        0.0193
+
+tfidf_1_1_sub.txt:
+  Precision@10: 0.8500
+  Recall@10:    0.0117
+  F1@10:        0.0226
+
+tfidf_1_2_nosub.txt:
+  Precision@10: 0.8000
+  Recall@10:    0.0073
+  F1@10:        0.0142
+
+tfidf_1_2_sub.txt:
+  Precision@10: 0.8600
+  Recall@10:    0.0105
+  F1@10:        0.0202
+
+---- BM25 ----
+
+bm25_1.2_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0161
+  F1@10:        0.0308
+
+bm25_1.5_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0161
+  F1@10:        0.0308
+
+bm25_2.0_0.75.txt:
+  Precision@10: 0.9900
+  Recall@10:    0.0161
+  F1@10:        0.0308
+
+bm25_sentiment_2.0_0.75_a0.2.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.0161
+  F1@10:        0.0308
+
+
+============================================================
 
