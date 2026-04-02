@@ -138,3 +138,8 @@ QRELS_KEYWORD = RESULTS_DIR / "qrels_keyword.txt"
 QRELS_COUNT   = RESULTS_DIR / "qrels_count.txt"
 QRELS_RATIO   = RESULTS_DIR / "qrels_ratio.txt"
 LOG_FILE      = RESULTS_DIR / "qrels_log.txt"
+
+# =========================
+# RRF RUNS
+# =========================
+RUNS_RRF_DIR = RUNS_DIR / "runs_rrf"

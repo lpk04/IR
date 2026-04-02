@@ -5,7 +5,8 @@ from collections import defaultdict
 from config import (
     RUNS_SEARCH_TFIDF_DIR,
     RUNS_SEARCH_BM25_DIR,
-    RESULTS_DIR
+    RESULTS_DIR,
+    RUNS_RRF_DIR, # cái này khi nào kết hợp 3 cái mới dùng
 )
 
 # =========================
@@ -173,6 +174,11 @@ def evaluate_all():
 
             f.write("---- BM25 ----\n\n")
             evaluate_folder(RUNS_SEARCH_BM25_DIR, qrels, f)
+
+            # thêm của ffr khi chạy khi k sài thì note lại
+            f.write("---- RRF ----\n\n")
+            evaluate_folder(RUNS_RRF_DIR, qrels, f)
+
 
             f.write("\n" + "=" * 60 + "\n\n")
 
