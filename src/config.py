@@ -30,7 +30,7 @@ REVIEW_RAW_FILE = DATA_DIR / "review.jsonl"
 REVIEW_PROCESSED_FILE = PROCESSED_DATA_DIR / "processed_review.jsonl"
 
 # Sentiment
-REVIEW_SENTIMENT_FILE = PROCESSED_DATA_DIR / "review_sentiment.jsonl"
+REVIEW_SENTIMENT_FILE = PROCESSED_DATA_DIR / "review_labeled.jsonl"
 REVIEW_SENTIMENT_FILE_PROCESSED = PROCESSED_DATA_DIR / "processed_review_sentiment.jsonl"
 
 # =========================
