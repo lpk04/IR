@@ -63,7 +63,7 @@ def load_queries():
 # =========================
 # RUN SEARCH
 # =========================
-def run_search(k1, b, top_k=10):
+def run_search(k1, b, top_k=100):
     index_paths = get_bm25_paths(k1, b)
     run_paths = get_bm25_run_paths(k1, b)
 

@@ -33,11 +33,7 @@ def ensure_dir(path):
     if not path.exists():
         path.mkdir(parents=True)
     else:
-        # xóa file nếu đã tồn tại
-        for f in path.glob("*"):
-            if f.is_file():
-                f.unlink()
-
+        print(f"⚠️ Exists: {path}")
 
 # =========================
 # LOAD INDEX
@@ -70,7 +66,7 @@ def load_queries():
 # =========================
 # RUN SEARCH
 # =========================
-def run_search(ngram, sublinear, top_k=10):
+def run_search(ngram, sublinear, top_k=100):
     index_paths = get_tfidf_paths(ngram, sublinear)
     run_paths = get_tfidf_run_paths(ngram, sublinear)
 

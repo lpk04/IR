@@ -1,5 +1,6 @@
 import os
 from collections import defaultdict
+from pathlib import Path
 
 from config import (
     RUNS_SEARCH_TFIDF_DIR,
@@ -10,11 +11,11 @@ from config import (
 # =========================
 # CONFIG
 # =========================
-K = 60  # constant RRF
+K = 60
 
 
 # =========================
-# LOAD RUN FILE
+# LOAD RUN
 # =========================
 def load_run(file_path):
     run = defaultdict(list)
@@ -22,6 +23,10 @@ def load_run(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         for line in f:
             parts = line.strip().split()
+
+            if len(parts) < 3:
+                continue
+
             qid = parts[0]
             doc_id = parts[2]
 
@@ -45,21 +50,25 @@ def get_rank_map(run):
 
 
 # =========================
-# RRF FUSION
+# RRF
 # =========================
-def rrf_fusion(runs):
-    fused = defaultdict(dict)
+def rrf_fusion(run1, run2):
+    fused = defaultdict(list)
 
-    rank_maps = [get_rank_map(r) for r in runs]
+    rm1 = get_rank_map(run1)
+    rm2 = get_rank_map(run2)
 
-    for qid in rank_maps[0]:
+    all_qids = set(rm1.keys()) | set(rm2.keys())
+
+    for qid in all_qids:
         scores = defaultdict(float)
 
-        for rm in rank_maps:
-            for doc_id, rank in rm[qid].items():
-                scores[doc_id] += 1.0 / (K + rank)
+        for doc_id, rank in rm1.get(qid, {}).items():
+            scores[doc_id] += 1.0 / (K + rank)
 
-        # sort
+        for doc_id, rank in rm2.get(qid, {}).items():
+            scores[doc_id] += 1.0 / (K + rank)
+
         ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 
         fused[qid] = [doc for doc, _ in ranked]
@@ -68,14 +77,29 @@ def rrf_fusion(runs):
 
 
 # =========================
-# SAVE RUN
+# AUTO PICK BEST FILE
+# =========================
+def pick_best_file(folder):
+    files = [f for f in os.listdir(folder) if f.endswith(".txt")]
+
+    if not files:
+        raise ValueError(f"❌ No run files in {folder}")
+
+    # 👉 đơn giản: lấy file cuối (thường là best bạn chạy)
+    # hoặc bạn có thể hard-code nếu muốn chắc chắn
+    files.sort()
+    return folder / files[-1]
+
+
+# =========================
+# SAVE
 # =========================
 def save_run(fused_run, output_file):
     output_file.parent.mkdir(parents=True, exist_ok=True)
 
     with open(output_file, "w", encoding="utf-8") as f:
         for qid, docs in fused_run.items():
-            for rank, doc_id in enumerate(docs[:10], start=1):
+            for rank, doc_id in enumerate(docs[:100], start=1):
                 f.write(f"{qid} Q0 {doc_id} {rank} {1.0/(rank):.4f} RRF\n")
 
     print(f"✅ Saved → {output_file}")
@@ -85,25 +109,28 @@ def save_run(fused_run, output_file):
 # MAIN
 # =========================
 def main():
-   
-    tfidf_file = RUNS_SEARCH_TFIDF_DIR / "tfidf_1_2_sub.txt"
-    bm25_file = RUNS_SEARCH_BM25_DIR / "bm25_2.0_0.75.txt"
-    sentiment_file = RUNS_SEARCH_BM25_DIR / "bm25_sentiment_2.0_0.75_a0.2.txt"
+    print("📥 Finding best run files...")
+
+    tfidf_file = pick_best_file(RUNS_SEARCH_TFIDF_DIR)
+    bm25_file  = pick_best_file(RUNS_SEARCH_BM25_DIR)
+
+    print(f"👉 TF-IDF: {tfidf_file}")
+    print(f"👉 BM25:   {bm25_file}")
 
     print("📥 Loading runs...")
-
     run_tfidf = load_run(tfidf_file)
-    run_bm25 = load_run(bm25_file)
-    run_sent = load_run(sentiment_file)
+    run_bm25  = load_run(bm25_file)
 
     print("🔀 Running RRF fusion...")
+    fused = rrf_fusion(run_tfidf, run_bm25)
 
-    fused = rrf_fusion([run_tfidf, run_bm25, run_sent])
-
-    output_file = RUNS_DIR / "runs_rrf" / "rrf_all.txt"
+    output_file = RUNS_DIR / "runs_rrf" / "rrf_tfidf_bm25.txt"
 
     save_run(fused, output_file)
 
 
+# =========================
+# RUN
+# =========================
 if __name__ == "__main__":
     main()

@@ -1,5 +1,7 @@
 import os
+import math
 from collections import defaultdict
+from pathlib import Path
 
 from config import (
     RUNS_SEARCH_TFIDF_DIR,
@@ -8,7 +10,7 @@ from config import (
 )
 
 # =========================
-# QRELS FILES
+# QRELS
 # =========================
 QRELS_FILES = {
     "KEYWORD": RESULTS_DIR / "qrels_keyword.txt",
@@ -20,17 +22,15 @@ RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 # =========================
-# LOAD QRELS
+# LOAD QRELS (graded)
 # =========================
 def load_qrels(file_path):
-    qrels = defaultdict(set)
+    qrels = defaultdict(dict)
 
     with open(file_path, "r", encoding="utf-8") as f:
         for line in f:
             qid, _, doc_id, rel = line.strip().split()
-
-            if int(rel) == 1:
-                qrels[qid].add(doc_id)
+            qrels[qid][doc_id] = int(rel)
 
     return qrels
 
@@ -44,6 +44,9 @@ def load_run(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         for line in f:
             parts = line.strip().split()
+            if len(parts) < 3:
+                continue
+
             qid = parts[0]
             doc_id = parts[2]
 
@@ -55,71 +58,92 @@ def load_run(file_path):
 # =========================
 # METRICS
 # =========================
-def precision_at_k(retrieved, relevant, k=10):
+def precision_at_k(retrieved, relevant_set, k=10):
     retrieved_k = retrieved[:k]
-    rel = sum(1 for doc in retrieved_k if doc in relevant)
-    return rel / k if k > 0 else 0
+    rel = sum(1 for d in retrieved_k if d in relevant_set)
+    return rel / k if k else 0
 
 
-def recall_at_k(retrieved, relevant, k=10):
+def recall_at_k(retrieved, relevant_set, k=10):
     retrieved_k = retrieved[:k]
-    rel = sum(1 for doc in retrieved_k if doc in relevant)
-    return rel / len(relevant) if relevant else 0
+    rel = sum(1 for d in retrieved_k if d in relevant_set)
+    return rel / len(relevant_set) if relevant_set else 0
 
 
 def f1(p, r):
-    return 2 * p * r / (p + r) if (p + r) > 0 else 0
+    return 2 * p * r / (p + r) if (p + r) else 0
+
+
+# =========================
+# DCG / NDCG
+# =========================
+def dcg(rels):
+    return sum(rel / math.log2(i + 2) for i, rel in enumerate(rels))
+
+
+def ndcg_at_k(retrieved, qrels, k=10):
+    rels = [qrels.get(doc, 0) for doc in retrieved[:k]]
+    dcg_val = dcg(rels)
+
+    ideal_rels = sorted(qrels.values(), reverse=True)[:k]
+    idcg = dcg(ideal_rels)
+
+    return dcg_val / idcg if idcg > 0 else 0
 
 
 # =========================
 # EVALUATE ONE RUN
 # =========================
-def evaluate_run(run_file, qrels, k=10):
+def evaluate_run(run_file, qrels_all, k=10):
     run = load_run(run_file)
 
-    precisions, recalls, f1s = [], [], []
+    P, R, F, N = [], [], [], []
 
     for qid in run:
         retrieved = run[qid]
-        relevant = qrels.get(qid, set())
+        qrels = qrels_all.get(qid, {})
 
-        p = precision_at_k(retrieved, relevant, k)
-        r = recall_at_k(retrieved, relevant, k)
+        relevant_set = {d for d, rel in qrels.items() if rel > 0}
+
+        p = precision_at_k(retrieved, relevant_set, k)
+        r = recall_at_k(retrieved, relevant_set, k)
         f = f1(p, r)
+        n = ndcg_at_k(retrieved, qrels, k)
 
-        precisions.append(p)
-        recalls.append(r)
-        f1s.append(f)
+        P.append(p)
+        R.append(r)
+        F.append(f)
+        N.append(n)
 
-    if not precisions:
-        return 0, 0, 0
+    if not P:
+        return 0, 0, 0, 0
 
     return (
-        sum(precisions) / len(precisions),
-        sum(recalls) / len(recalls),
-        sum(f1s) / len(f1s),
+        sum(P) / len(P),
+        sum(R) / len(R),
+        sum(F) / len(F),
+        sum(N) / len(N),
     )
 
 
 # =========================
 # EVALUATE FOLDER
 # =========================
-def evaluate_folder(folder, qrels, f):
+def evaluate_folder(folder, qrels):
+    results = []
+
     if not folder.exists():
-        return
+        return results
 
     for file in os.listdir(folder):
         if file.endswith(".txt"):
-            run_path = folder / file
+            path = folder / file
+            p, r, f, n = evaluate_run(path, qrels)
+            results.append((file, p, r, f, n))
 
-            p, r, f1_score = evaluate_run(run_path, qrels)
+    results.sort(key=lambda x: x[4], reverse=True)  # sort theo NDCG
 
-            f.write(
-                f"{file}:\n"
-                f"  Precision@10: {p:.4f}\n"
-                f"  Recall@10:    {r:.4f}\n"
-                f"  F1@10:        {f1_score:.4f}\n\n"
-            )
+    return results
 
 
 # =========================
@@ -130,32 +154,43 @@ def evaluate_all():
 
     with open(result_file, "w", encoding="utf-8") as f:
 
-        f.write("===== EVALUATION RESULTS =====\n\n")
-
-        # =========================
-        # LOOP QRELS TYPES
-        # =========================
         for name, qrels_path in QRELS_FILES.items():
             if not qrels_path.exists():
                 continue
 
-            f.write(f"===== QRELS: {name} =====\n\n")
+            f.write(f"\n===== QRELS: {name} =====\n\n")
 
             qrels = load_qrels(qrels_path)
 
-            f.write("---- TF-IDF ----\n\n")
-            evaluate_folder(RUNS_SEARCH_TFIDF_DIR, qrels, f)
+            f.write("---- TF-IDF ----\n")
+            tfidf_results = evaluate_folder(RUNS_SEARCH_TFIDF_DIR, qrels)
 
-            f.write("---- BM25 ----\n\n")
-            evaluate_folder(RUNS_SEARCH_BM25_DIR, qrels, f)
+            for file, p, r, f1_score, ndcg in tfidf_results:
+                f.write(
+                    f"{file}\n"
+                    f"  P@10: {p:.4f} | R@10: {r:.4f} | F1@10: {f1_score:.4f} | NDCG@10: {ndcg:.4f}\n\n"
+                )
 
-            f.write("\n" + "=" * 60 + "\n\n")
+            f.write("---- BM25 ----\n")
+            bm25_results = evaluate_folder(RUNS_SEARCH_BM25_DIR, qrels)
 
-    print(f"✅ Evaluation saved → {result_file}")
+            for file, p, r, f1_score, ndcg in bm25_results:
+                f.write(
+                    f"{file}\n"
+                    f"  P@10: {p:.4f} | R@10: {r:.4f} | F1@10: {f1_score:.4f} | NDCG@10: {ndcg:.4f}\n\n"
+                )
+
+            # best theo NDCG
+            all_results = tfidf_results + bm25_results
+            if all_results:
+                best = max(all_results, key=lambda x: x[4])
+                f.write("🔥 BEST (by NDCG):\n")
+                f.write(f"{best[0]} → NDCG@10: {best[4]:.4f}\n\n")
+
+            f.write("=" * 60 + "\n")
+
+    print(f"✅ Done → {result_file}")
 
 
-# =========================
-# RUN
-# =========================
 if __name__ == "__main__":
     evaluate_all()

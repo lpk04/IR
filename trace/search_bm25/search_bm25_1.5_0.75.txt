@@ -55,58 +55,58 @@ Tokens: ['clean', 'hotel', 'room']
 
 --------------------------------------------------
 
-Query: spicy noodles
-Clean: spicy noodle
-Tokens: ['spicy', 'noodle']
-  Rank 1: Doc 52780 | Score: 13.7677
-  Rank 2: Doc 85260 | Score: 13.5699
-  Rank 3: Doc 24889 | Score: 13.0474
-  Rank 4: Doc 89029 | Score: 12.9116
-  Rank 5: Doc 82951 | Score: 12.6223
+Query: I am looking for a cheap sushi restaurant with fresh ingredients
+Clean: look cheap sushi restaurant fresh ingredient
+Tokens: ['look', 'cheap', 'sushi', 'restaurant', 'fresh', 'ingredient']
+  Rank 1: Doc 51273 | Score: 18.7372
+  Rank 2: Doc 14875 | Score: 16.4468
+  Rank 3: Doc 45046 | Score: 15.8374
+  Rank 4: Doc 60203 | Score: 15.6128
+  Rank 5: Doc 6893 | Score: 15.3906
 
 --------------------------------------------------
 
-Query: cheap coffee shop
-Clean: cheap coffee shop
-Tokens: ['cheap', 'coffee', 'shop']
-  Rank 1: Doc 70268 | Score: 11.9873
-  Rank 2: Doc 20262 | Score: 11.7241
-  Rank 3: Doc 75415 | Score: 11.4761
-  Rank 4: Doc 93556 | Score: 11.2325
-  Rank 5: Doc 16859 | Score: 11.1326
+Query: The service at this restaurant was really bad and disappointing
+Clean: service restaurant really bad disappointing
+Tokens: ['service', 'restaurant', 'really', 'bad', 'disappointing']
+  Rank 1: Doc 3004 | Score: 13.3206
+  Rank 2: Doc 71361 | Score: 12.9136
+  Rank 3: Doc 82600 | Score: 12.5605
+  Rank 4: Doc 98532 | Score: 12.1484
+  Rank 5: Doc 39090 | Score: 12.1444
 
 --------------------------------------------------
 
-Query: good food but slow service
-Clean: good food slow service
-Tokens: ['good', 'food', 'slow', 'service']
-  Rank 1: Doc 64736 | Score: 9.9717
-  Rank 2: Doc 69185 | Score: 9.9298
-  Rank 3: Doc 73192 | Score: 9.9298
-  Rank 4: Doc 74613 | Score: 9.1985
-  Rank 5: Doc 303 | Score: 9.1202
+Query: I want to find a cafe with very friendly staff and good coffee
+Clean: want find cafe friendly staff good coffee
+Tokens: ['want', 'find', 'cafe', 'friendly', 'staff', 'good', 'coffee']
+  Rank 1: Doc 61076 | Score: 16.2017
+  Rank 2: Doc 97984 | Score: 16.0690
+  Rank 3: Doc 31960 | Score: 15.2250
+  Rank 4: Doc 87565 | Score: 15.1385
+  Rank 5: Doc 94956 | Score: 14.8519
 
 --------------------------------------------------
 
-Query: affordable restaurant
-Clean: affordable restaurant
-Tokens: ['affordable', 'restaurant']
-  Rank 1: Doc 57854 | Score: 10.5026
-  Rank 2: Doc 45565 | Score: 9.9231
-  Rank 3: Doc 44909 | Score: 9.8259
-  Rank 4: Doc 82471 | Score: 9.6568
-  Rank 5: Doc 83206 | Score: 9.6568
+Query: This place has the best pizza I have ever tried in town
+Clean: place best pizza ever try town
+Tokens: ['place', 'best', 'pizza', 'ever', 'try', 'town']
+  Rank 1: Doc 91968 | Score: 15.9737
+  Rank 2: Doc 79744 | Score: 15.6689
+  Rank 3: Doc 990 | Score: 14.8582
+  Rank 4: Doc 86862 | Score: 14.2370
+  Rank 5: Doc 51046 | Score: 13.9078
 
 --------------------------------------------------
 
-Query: quiet place to eat
-Clean: quiet place eat
-Tokens: ['quiet', 'place', 'eat']
-  Rank 1: Doc 32290 | Score: 9.8705
-  Rank 2: Doc 10242 | Score: 9.4835
-  Rank 3: Doc 1739 | Score: 9.4723
-  Rank 4: Doc 50677 | Score: 9.2241
-  Rank 5: Doc 65807 | Score: 9.1168
+Query: I love eating spicy noodles with strong flavor and rich broth
+Clean: love eating spicy noodle strong flavor rich broth
+Tokens: ['love', 'eating', 'spicy', 'noodle', 'strong', 'flavor', 'rich', 'broth']
+  Rank 1: Doc 85161 | Score: 23.9050
+  Rank 2: Doc 16434 | Score: 22.9527
+  Rank 3: Doc 86538 | Score: 22.6960
+  Rank 4: Doc 43298 | Score: 20.5718
+  Rank 5: Doc 1743 | Score: 19.1712
 
 --------------------------------------------------
 

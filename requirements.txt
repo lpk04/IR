@@ -10,3 +10,4 @@ streamlit
 rank-bm25
 wordcloud
 streamlit
+flask

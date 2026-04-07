@@ -2,7 +2,7 @@ import json
 import re
 from tqdm import tqdm
 
-from config import (
+from src.config import (
     YELP_REVIEW_FILE,
     REVIEW_RAW_FILE,
     REVIEW_PROCESSED_FILE,

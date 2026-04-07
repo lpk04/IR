@@ -50,53 +50,53 @@ Clean: clean hotel room
 
 --------------------------------------------------
 
-Query: spicy noodles
-Clean: spicy noodle
-  Rank 1: Doc 24889 | Score: 0.6054
-  Rank 2: Doc 82951 | Score: 0.5804
-  Rank 3: Doc 71081 | Score: 0.4886
-  Rank 4: Doc 71342 | Score: 0.4531
-  Rank 5: Doc 89029 | Score: 0.4497
+Query: I am looking for a cheap sushi restaurant with fresh ingredients
+Clean: look cheap sushi restaurant fresh ingredient
+  Rank 1: Doc 51273 | Score: 0.4987
+  Rank 2: Doc 50586 | Score: 0.4405
+  Rank 3: Doc 1886 | Score: 0.4377
+  Rank 4: Doc 48023 | Score: 0.4082
+  Rank 5: Doc 90081 | Score: 0.3946
 
 --------------------------------------------------
 
-Query: cheap coffee shop
-Clean: cheap coffee shop
-  Rank 1: Doc 93778 | Score: 0.4981
-  Rank 2: Doc 646 | Score: 0.4616
-  Rank 3: Doc 16859 | Score: 0.4600
-  Rank 4: Doc 10928 | Score: 0.4583
-  Rank 5: Doc 27865 | Score: 0.4496
+Query: The service at this restaurant was really bad and disappointing
+Clean: service restaurant really bad disappointing
+  Rank 1: Doc 29660 | Score: 0.5260
+  Rank 2: Doc 98532 | Score: 0.4905
+  Rank 3: Doc 26533 | Score: 0.4290
+  Rank 4: Doc 68528 | Score: 0.4230
+  Rank 5: Doc 3004 | Score: 0.4138
 
 --------------------------------------------------
 
-Query: good food but slow service
-Clean: good food slow service
-  Rank 1: Doc 27418 | Score: 0.6863
-  Rank 2: Doc 74613 | Score: 0.6383
-  Rank 3: Doc 69185 | Score: 0.6209
-  Rank 4: Doc 49739 | Score: 0.6085
-  Rank 5: Doc 73192 | Score: 0.6056
+Query: I want to find a cafe with very friendly staff and good coffee
+Clean: want find cafe friendly staff good coffee
+  Rank 1: Doc 32243 | Score: 0.4704
+  Rank 2: Doc 93071 | Score: 0.4504
+  Rank 3: Doc 99272 | Score: 0.4227
+  Rank 4: Doc 78205 | Score: 0.4193
+  Rank 5: Doc 97984 | Score: 0.4120
 
 --------------------------------------------------
 
-Query: affordable restaurant
-Clean: affordable restaurant
-  Rank 1: Doc 57854 | Score: 0.6274
-  Rank 2: Doc 45565 | Score: 0.5656
-  Rank 3: Doc 52789 | Score: 0.4891
-  Rank 4: Doc 70774 | Score: 0.4869
-  Rank 5: Doc 82215 | Score: 0.4744
+Query: This place has the best pizza I have ever tried in town
+Clean: place best pizza ever try town
+  Rank 1: Doc 91968 | Score: 0.6098
+  Rank 2: Doc 42237 | Score: 0.5875
+  Rank 3: Doc 79744 | Score: 0.5656
+  Rank 4: Doc 89863 | Score: 0.5178
+  Rank 5: Doc 51046 | Score: 0.4879
 
 --------------------------------------------------
 
-Query: quiet place to eat
-Clean: quiet place eat
-  Rank 1: Doc 82252 | Score: 0.4644
-  Rank 2: Doc 58477 | Score: 0.4410
-  Rank 3: Doc 48292 | Score: 0.4318
-  Rank 4: Doc 7748 | Score: 0.4179
-  Rank 5: Doc 1429 | Score: 0.4088
+Query: I love eating spicy noodles with strong flavor and rich broth
+Clean: love eating spicy noodle strong flavor rich broth
+  Rank 1: Doc 32484 | Score: 0.4769
+  Rank 2: Doc 86538 | Score: 0.3500
+  Rank 3: Doc 75699 | Score: 0.3457
+  Rank 4: Doc 69053 | Score: 0.3322
+  Rank 5: Doc 85156 | Score: 0.3302
 
 --------------------------------------------------
 

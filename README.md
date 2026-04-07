@@ -22,6 +22,11 @@ python src/index_tfidf.py --ngram 11 --sublinear true
 python src/index_tfidf.py --ngram 12 --sublinear false
 python src/index_tfidf.py --ngram 12 --sublinear true
 
+-index_bm25
+python src/index_bm25.py --k1 1.2 --b 0.75
+python src/index_bm25.py --k1 1.5 --b 0.75
+python src/index_bm25.py --k1 2.0 --b 0.75
+python src/index_bm25.py --k1 5.0 --b 0.75
 
 -search_tfidf.py
 python src/search_tfidf.py --ngram 11 --sublinear false
@@ -29,16 +34,11 @@ python src/search_tfidf.py --ngram 11 --sublinear true
 python src/search_tfidf.py --ngram 12 --sublinear false
 python src/search_tfidf.py --ngram 12 --sublinear true
 
-
--index_bm25
-python src/index_bm25.py --k1 1.2 --b 0.75
-python src/index_bm25.py --k1 1.5 --b 0.75
-python src/index_bm25.py --k1 2.0 --b 0.75
-
 -search_bm25
 python src/search_bm25.py --k1 1.2 --b 0.75
 python src/search_bm25.py --k1 1.5 --b 0.75
 python src/search_bm25.py --k1 2.0 --b 0.75
+python src/search_bm25.py --k1 5.0 --b 0.75
 
 -generate_queries.py
 điều kiện
@@ -56,20 +56,14 @@ match theo %
 -evaluate_results.py 
 
 
--search_bm25_sentiment.py --k1 2.0 --b 0.75
-
+-search_bm25_sentiment.py --k1 1.2 --b 0.75
 so sánh các mô hình khi thêm sentiment vào
-sentiment chạy ranking thay đổi nhưng f1 recall đồ k thay đổi do
-model ổn
-rerank ổn  
-nhưng metric thì quá thấp chưa đủ nhạy
-
--evaluate_ndcg_results.py
-Precision ↑ (tốt hơn)
-NDCG ↑ (ranking tốt hơn)
-Recall giữ nguyên
 
 
+python src/rerank_bm25_sentiment.py --k1 1.2 --b 0.75 --alpha 0.0
+python src/rerank_bm25_sentiment.py --k1 1.2 --b 0.75 --alpha 0.2
+python src/rerank_bm25_sentiment.py --k1 1.2 --b 0.75 --alpha 0.5
+python src/rerank_bm25_sentiment.py --k1 1.2 --b 0.75 --alpha 1
 
 
 git add .

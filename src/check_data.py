@@ -18,6 +18,5 @@ def sample_dataset():
         for line in sampled:
             f.write(line)
 
-
 if __name__ == "__main__":
     sample_dataset()

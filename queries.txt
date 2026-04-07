@@ -3,8 +3,8 @@ Q2	bad service restaurant
 Q3	friendly staff cafe
 Q4	best pizza in town
 Q5	clean hotel room
-Q6	spicy noodles
-Q7	cheap coffee shop
-Q8	good food but slow service
-Q9	affordable restaurant
-Q10	quiet place to eat
+Q6	I am looking for a cheap sushi restaurant with fresh ingredients
+Q7	The service at this restaurant was really bad and disappointing
+Q8	I want to find a cafe with very friendly staff and good coffee
+Q9	This place has the best pizza I have ever tried in town
+Q10	I love eating spicy noodles with strong flavor and rich broth

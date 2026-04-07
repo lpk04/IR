@@ -1,0 +1,142 @@
+===== BM25 + ML Sentiment (alpha=0.5) =====
+
+Query: cheap sushi near me | QSent: positive
+  Rank 1: Doc 50586 | Score: 12.1379 | DocSent: positive
+  Rank 2: Doc 4558 | Score: 12.0060 | DocSent: positive
+  Rank 3: Doc 1886 | Score: 11.8993 | DocSent: positive
+  Rank 4: Doc 48234 | Score: 11.8718 | DocSent: positive
+  Rank 5: Doc 55076 | Score: 11.5843 | DocSent: positive
+  Rank 6: Doc 51273 | Score: 11.5843 | DocSent: positive
+  Rank 7: Doc 9635 | Score: 11.1617 | DocSent: positive
+  Rank 8: Doc 51857 | Score: 11.0526 | DocSent: positive
+  Rank 9: Doc 89109 | Score: 11.0467 | DocSent: positive
+  Rank 10: Doc 26104 | Score: 10.9754 | DocSent: positive
+
+--------------------------------------------------
+
+Query: bad service restaurant | QSent: negative
+  Rank 1: Doc 42549 | Score: 8.7061 | DocSent: negative
+  Rank 2: Doc 74623 | Score: 8.4387 | DocSent: negative
+  Rank 3: Doc 45944 | Score: 8.4275 | DocSent: negative
+  Rank 4: Doc 99034 | Score: 8.2012 | DocSent: negative
+  Rank 5: Doc 94148 | Score: 8.1005 | DocSent: negative
+  Rank 6: Doc 16974 | Score: 8.0667 | DocSent: negative
+  Rank 7: Doc 59632 | Score: 7.9690 | DocSent: negative
+  Rank 8: Doc 73016 | Score: 7.8816 | DocSent: negative
+  Rank 9: Doc 68260 | Score: 7.7541 | DocSent: negative
+  Rank 10: Doc 63568 | Score: 7.7475 | DocSent: negative
+
+--------------------------------------------------
+
+Query: friendly staff cafe | QSent: positive
+  Rank 1: Doc 5681 | Score: 11.9679 | DocSent: positive
+  Rank 2: Doc 4896 | Score: 11.8715 | DocSent: positive
+  Rank 3: Doc 7742 | Score: 11.7069 | DocSent: positive
+  Rank 4: Doc 99476 | Score: 11.3137 | DocSent: positive
+  Rank 5: Doc 99614 | Score: 11.1887 | DocSent: positive
+  Rank 6: Doc 42040 | Score: 11.1887 | DocSent: positive
+  Rank 7: Doc 43666 | Score: 11.1575 | DocSent: positive
+  Rank 8: Doc 58933 | Score: 10.9934 | DocSent: positive
+  Rank 9: Doc 61076 | Score: 10.9471 | DocSent: positive
+  Rank 10: Doc 33743 | Score: 10.8304 | DocSent: positive
+
+--------------------------------------------------
+
+Query: best pizza in town | QSent: positive
+  Rank 1: Doc 89863 | Score: 12.6986 | DocSent: positive
+  Rank 2: Doc 79744 | Score: 12.5818 | DocSent: positive
+  Rank 3: Doc 89157 | Score: 12.2429 | DocSent: positive
+  Rank 4: Doc 91968 | Score: 12.1459 | DocSent: positive
+  Rank 5: Doc 99801 | Score: 12.1459 | DocSent: positive
+  Rank 6: Doc 9745 | Score: 12.0261 | DocSent: positive
+  Rank 7: Doc 8085 | Score: 11.9182 | DocSent: positive
+  Rank 8: Doc 59267 | Score: 11.7959 | DocSent: positive
+  Rank 9: Doc 16254 | Score: 11.7523 | DocSent: positive
+  Rank 10: Doc 87930 | Score: 11.7275 | DocSent: positive
+
+--------------------------------------------------
+
+Query: clean hotel room | QSent: positive
+  Rank 1: Doc 28063 | Score: 14.3610 | DocSent: positive
+  Rank 2: Doc 33715 | Score: 14.0376 | DocSent: positive
+  Rank 3: Doc 4698 | Score: 13.9220 | DocSent: positive
+  Rank 4: Doc 82113 | Score: 13.8727 | DocSent: positive
+  Rank 5: Doc 31405 | Score: 13.8633 | DocSent: positive
+  Rank 6: Doc 52177 | Score: 13.8558 | DocSent: positive
+  Rank 7: Doc 32173 | Score: 13.7809 | DocSent: positive
+  Rank 8: Doc 40378 | Score: 13.7456 | DocSent: positive
+  Rank 9: Doc 1656 | Score: 13.4213 | DocSent: positive
+  Rank 10: Doc 67538 | Score: 13.2108 | DocSent: positive
+
+--------------------------------------------------
+
+Query: I am looking for a cheap sushi restaurant with fresh ingredients | QSent: positive
+  Rank 1: Doc 51273 | Score: 18.1218 | DocSent: positive
+  Rank 2: Doc 14875 | Score: 16.3392 | DocSent: positive
+  Rank 3: Doc 45046 | Score: 16.0749 | DocSent: positive
+  Rank 4: Doc 6893 | Score: 15.4590 | DocSent: positive
+  Rank 5: Doc 24597 | Score: 15.0570 | DocSent: positive
+  Rank 6: Doc 60203 | Score: 14.8126 | DocSent: negative
+  Rank 7: Doc 14596 | Score: 14.6472 | DocSent: positive
+  Rank 8: Doc 19383 | Score: 14.6434 | DocSent: negative
+  Rank 9: Doc 50586 | Score: 14.5925 | DocSent: positive
+  Rank 10: Doc 10671 | Score: 14.4833 | DocSent: positive
+
+--------------------------------------------------
+
+Query: The service at this restaurant was really bad and disappointing | QSent: negative
+  Rank 1: Doc 3004 | Score: 13.2224 | DocSent: negative
+  Rank 2: Doc 71361 | Score: 13.1377 | DocSent: negative
+  Rank 3: Doc 82600 | Score: 12.8901 | DocSent: negative
+  Rank 4: Doc 39090 | Score: 12.5240 | DocSent: negative
+  Rank 5: Doc 98532 | Score: 12.1440 | DocSent: negative
+  Rank 6: Doc 29660 | Score: 11.7244 | DocSent: negative
+  Rank 7: Doc 3352 | Score: 11.2687 | DocSent: negative
+  Rank 8: Doc 19864 | Score: 11.0718 | DocSent: negative
+  Rank 9: Doc 16262 | Score: 10.9247 | DocSent: negative
+  Rank 10: Doc 51923 | Score: 10.9016 | DocSent: negative
+
+--------------------------------------------------
+
+Query: I want to find a cafe with very friendly staff and good coffee | QSent: positive
+  Rank 1: Doc 61076 | Score: 15.9357 | DocSent: positive
+  Rank 2: Doc 97984 | Score: 15.8454 | DocSent: positive
+  Rank 3: Doc 87565 | Score: 15.3386 | DocSent: positive
+  Rank 4: Doc 31960 | Score: 15.2253 | DocSent: positive
+  Rank 5: Doc 67789 | Score: 14.7429 | DocSent: positive
+  Rank 6: Doc 78390 | Score: 14.6584 | DocSent: positive
+  Rank 7: Doc 78513 | Score: 14.3461 | DocSent: positive
+  Rank 8: Doc 9459 | Score: 14.1525 | DocSent: positive
+  Rank 9: Doc 94956 | Score: 14.1248 | DocSent: neutral
+  Rank 10: Doc 56310 | Score: 14.0936 | DocSent: positive
+
+--------------------------------------------------
+
+Query: This place has the best pizza I have ever tried in town | QSent: positive
+  Rank 1: Doc 91968 | Score: 15.6701 | DocSent: positive
+  Rank 2: Doc 79744 | Score: 15.2815 | DocSent: positive
+  Rank 3: Doc 990 | Score: 14.7961 | DocSent: positive
+  Rank 4: Doc 86862 | Score: 13.9617 | DocSent: positive
+  Rank 5: Doc 51046 | Score: 13.7832 | DocSent: positive
+  Rank 6: Doc 73165 | Score: 13.5609 | DocSent: positive
+  Rank 7: Doc 89863 | Score: 13.4989 | DocSent: positive
+  Rank 8: Doc 25834 | Score: 13.3293 | DocSent: positive
+  Rank 9: Doc 22202 | Score: 13.1301 | DocSent: positive
+  Rank 10: Doc 82470 | Score: 13.0195 | DocSent: positive
+
+--------------------------------------------------
+
+Query: I love eating spicy noodles with strong flavor and rich broth | QSent: positive
+  Rank 1: Doc 85161 | Score: 23.8080 | DocSent: positive
+  Rank 2: Doc 16434 | Score: 22.7470 | DocSent: positive
+  Rank 3: Doc 86538 | Score: 22.4124 | DocSent: positive
+  Rank 4: Doc 43298 | Score: 20.2190 | DocSent: positive
+  Rank 5: Doc 1743 | Score: 19.1845 | DocSent: positive
+  Rank 6: Doc 62869 | Score: 18.3556 | DocSent: positive
+  Rank 7: Doc 96567 | Score: 18.3004 | DocSent: neutral
+  Rank 8: Doc 63957 | Score: 17.9048 | DocSent: positive
+  Rank 9: Doc 46843 | Score: 17.8370 | DocSent: positive
+  Rank 10: Doc 75699 | Score: 17.6860 | DocSent: positive
+
+--------------------------------------------------
+
