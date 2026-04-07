@@ -7,11 +7,53 @@ import re
 # =========================
 def expand_contractions(text):
     text = text.lower()
-    text = text.replace("can't", "can not")
-    text = text.replace("won't", "will not")
-    text = text.replace("n't", " not")
-    return text
 
+    contractions = {
+        "can't": "can not",
+        "won't": "will not",
+        "n't": " not",
+
+        "'re": " are",
+        "'s": " is",       
+        "'d": " would",
+        "'ll": " will",
+        "'ve": " have",
+        "'m": " am",
+
+        "it's": "it is",
+        "that's": "that is",
+        "there's": "there is",
+        "what's": "what is",
+        "who's": "who is",
+        "where's": "where is",
+        "how's": "how is",
+
+        "i'm": "i am",
+        "you're": "you are",
+        "we're": "we are",
+        "they're": "they are",
+
+        "i've": "i have",
+        "you've": "you have",
+        "we've": "we have",
+        "they've": "they have",
+
+        "i'll": "i will",
+        "you'll": "you will",
+        "he'll": "he will",
+        "she'll": "she will",
+        "they'll": "they will",
+
+        "i'd": "i would",
+        "you'd": "you would",
+        "he'd": "he would",
+        "she'd": "she would",
+    }
+
+    for key, value in contractions.items():
+        text = text.replace(key, value)
+
+    return text
 
 # =========================
 # 2. Clean text (chuẩn baseline)
