@@ -1,0 +1,17 @@
+{
+  "started_at": "2026-04-13T10:42:37.694744+00:00",
+  "finished_at": "2026-04-13T10:42:59.681006+00:00",
+  "elapsed_seconds": 21.9863,
+  "input_file": "D:\\THTT\\IR-main\\IR\\data\\raw\\yelp_reviews_100000.jsonl",
+  "output_file": "D:\\THTT\\IR-main\\IR\\data\\processed\\yelp_reviews_100000_transformer_processed.jsonl",
+  "trace_file": "D:\\THTT\\IR-main\\IR\\trace\\yelp_reviews_100000_processed.txt",
+  "records_seen": 100000,
+  "valid_json_records": 100000,
+  "malformed_json_records": 0,
+  "missing_text_records": 0,
+  "non_english_records": 7,
+  "empty_clean_records": 0,
+  "records_written": 99993,
+  "max_docs": 100000,
+  "trace_limit": 20
+}

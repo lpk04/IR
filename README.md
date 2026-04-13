@@ -1,7 +1,7 @@
 -setup file python setup_project.py
 -config python config.py
--tạo mt python -m venv venv
--bat mt venv\Scripts\activate
+-tạo mt python -m venv .venv
+-bat mt .venv\Scripts\activate
 -cài nltk 
 bash--> python--> 
 import nltk

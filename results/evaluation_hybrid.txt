@@ -1,0 +1,33 @@
+
+===== QRELS: KEYWORD =====
+
+---- HYBRID (BM25 + TRANSFORMER) ----
+hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt
+  P@10: 0.6400 | R@10: 0.2558 | F1@10: 0.3627 | NDCG@10: 0.5007
+
+🔥 BEST HYBRID (by NDCG):
+hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt → NDCG@10: 0.5007
+
+============================================================
+
+===== QRELS: COUNT =====
+
+---- HYBRID (BM25 + TRANSFORMER) ----
+hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt
+  P@10: 0.6400 | R@10: 0.2558 | F1@10: 0.3627 | NDCG@10: 0.5036
+
+🔥 BEST HYBRID (by NDCG):
+hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt → NDCG@10: 0.5036
+
+============================================================
+
+===== QRELS: RATIO =====
+
+---- HYBRID (BM25 + TRANSFORMER) ----
+hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt
+  P@10: 0.6400 | R@10: 0.2558 | F1@10: 0.3627 | NDCG@10: 0.4913
+
+🔥 BEST HYBRID (by NDCG):
+hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt → NDCG@10: 0.4913
+
+============================================================

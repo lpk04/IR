@@ -2,3 +2,4 @@ data/yelp_academic_dataset_review.json
 data/*.jsonl
 venv/
 __pycache__/
+trace/

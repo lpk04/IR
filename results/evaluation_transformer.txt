@@ -1,0 +1,42 @@
+
+===== QRELS: KEYWORD =====
+
+---- TRANSFORMER ----
+transformer_all_MiniLM_L6_v2.txt
+  P@10: 0.3200 | R@10: 0.1289 | F1@10: 0.1826 | NDCG@10: 0.3100
+
+transformer_rerank_all_MiniLM_L6_v2_cross_encoder_ms_marco_MiniLM_L_6_v2_c100.txt
+  P@10: 0.3500 | R@10: 0.1441 | F1@10: 0.2027 | NDCG@10: 0.2874
+
+🔥 BEST (by NDCG):
+transformer_all_MiniLM_L6_v2.txt → NDCG@10: 0.3100
+
+============================================================
+
+===== QRELS: COUNT =====
+
+---- TRANSFORMER ----
+transformer_all_MiniLM_L6_v2.txt
+  P@10: 0.3200 | R@10: 0.1289 | F1@10: 0.1826 | NDCG@10: 0.3127
+
+transformer_rerank_all_MiniLM_L6_v2_cross_encoder_ms_marco_MiniLM_L_6_v2_c100.txt
+  P@10: 0.3500 | R@10: 0.1441 | F1@10: 0.2027 | NDCG@10: 0.2956
+
+🔥 BEST (by NDCG):
+transformer_all_MiniLM_L6_v2.txt → NDCG@10: 0.3127
+
+============================================================
+
+===== QRELS: RATIO =====
+
+---- TRANSFORMER ----
+transformer_all_MiniLM_L6_v2.txt
+  P@10: 0.3200 | R@10: 0.1289 | F1@10: 0.1826 | NDCG@10: 0.2909
+
+transformer_rerank_all_MiniLM_L6_v2_cross_encoder_ms_marco_MiniLM_L_6_v2_c100.txt
+  P@10: 0.3500 | R@10: 0.1441 | F1@10: 0.2027 | NDCG@10: 0.2846
+
+🔥 BEST (by NDCG):
+transformer_all_MiniLM_L6_v2.txt → NDCG@10: 0.2909
+
+============================================================

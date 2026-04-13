@@ -1,38 +1,167 @@
-===== FINAL COMPARISON =====
+===== ALL RUN COMPARISON =====
 
 ===== QRELS: KEYWORD =====
 
----- BM25 BEST ----
-P@10: 1.0000 | R@10: 0.1083 | F1: 0.1951 | NDCG: 1.0000
+[TRANSFORMER] transformer_all_MiniLM_L6_v2.txt
+  P@10: 0.3200 | R@10: 0.1289 | F1: 0.1826 | NDCG: 0.3100
 
----- RRF (TF-IDF + BM25) ----
-P@10: 0.9800 | R@10: 0.1063 | F1: 0.1915 | NDCG: 0.9864
+[TRANSFORMER] transformer_rerank_all_MiniLM_L6_v2_cross_encoder_ms_marco_MiniLM_L_6_v2_c100.txt
+  P@10: 0.3500 | R@10: 0.1441 | F1: 0.2027 | NDCG: 0.2874
 
-👉 BM25 WIN
+[RRF/HYBRID] hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt
+  P@10: 0.3600 | R@10: 0.1370 | F1: 0.1970 | NDCG: 0.2696
+
+[TFIDF] tfidf_1_2_sub.txt
+  P@10: 0.3400 | R@10: 0.1285 | F1: 0.1849 | NDCG: 0.1867
+
+[BM25] bm25_1.2_0.75.txt
+  P@10: 0.3000 | R@10: 0.1126 | F1: 0.1624 | NDCG: 0.1733
+
+[BM25] bm25_sentiment_ml_1.2_0.75_a0.0.txt
+  P@10: 0.3000 | R@10: 0.1126 | F1: 0.1624 | NDCG: 0.1733
+
+[BM25] bm25_sentiment_ml_1.2_0.75_a0.2.txt
+  P@10: 0.3000 | R@10: 0.1126 | F1: 0.1624 | NDCG: 0.1715
+
+[BM25] bm25_1.5_0.75.txt
+  P@10: 0.2900 | R@10: 0.1092 | F1: 0.1574 | NDCG: 0.1680
+
+[BM25] bm25_2.0_0.75.txt
+  P@10: 0.2800 | R@10: 0.1063 | F1: 0.1528 | NDCG: 0.1648
+
+[TFIDF] tfidf_1_2_nosub.txt
+  P@10: 0.2800 | R@10: 0.1006 | F1: 0.1470 | NDCG: 0.1575
+
+[BM25] bm25_sentiment_ml_1.2_0.75_a0.5.txt
+  P@10: 0.2700 | R@10: 0.0983 | F1: 0.1430 | NDCG: 0.1546
+
+[BM25] bm25_sentiment_ml_1.2_0.75_a1.0.txt
+  P@10: 0.2600 | R@10: 0.0953 | F1: 0.1385 | NDCG: 0.1489
+
+[RRF/HYBRID] rrf_tfidf_bm25.txt
+  P@10: 0.2300 | R@10: 0.0886 | F1: 0.1268 | NDCG: 0.1459
+
+[BM25] bm25_5.0_0.75.txt
+  P@10: 0.2300 | R@10: 0.0915 | F1: 0.1299 | NDCG: 0.1312
+
+[TFIDF] tfidf_1_1_sub.txt
+  P@10: 0.1700 | R@10: 0.0683 | F1: 0.0966 | NDCG: 0.1074
+
+[TFIDF] tfidf_1_1_nosub.txt
+  P@10: 0.1600 | R@10: 0.0628 | F1: 0.0895 | NDCG: 0.1026
+
+🔥 BEST RESULT:
+[TRANSFORMER] transformer_all_MiniLM_L6_v2.txt → NDCG: 0.3100
 
 ============================================================
 
 ===== QRELS: COUNT =====
 
----- BM25 BEST ----
-P@10: 1.0000 | R@10: 0.1208 | F1: 0.2143 | NDCG: 1.0000
+[TRANSFORMER] transformer_all_MiniLM_L6_v2.txt
+  P@10: 0.3200 | R@10: 0.1289 | F1: 0.1826 | NDCG: 0.3127
 
----- RRF (TF-IDF + BM25) ----
-P@10: 0.9700 | R@10: 0.1177 | F1: 0.2087 | NDCG: 0.9725
+[TRANSFORMER] transformer_rerank_all_MiniLM_L6_v2_cross_encoder_ms_marco_MiniLM_L_6_v2_c100.txt
+  P@10: 0.3500 | R@10: 0.1441 | F1: 0.2027 | NDCG: 0.2956
 
-👉 BM25 WIN
+[RRF/HYBRID] hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt
+  P@10: 0.3600 | R@10: 0.1370 | F1: 0.1970 | NDCG: 0.2815
+
+[TFIDF] tfidf_1_2_sub.txt
+  P@10: 0.3400 | R@10: 0.1285 | F1: 0.1849 | NDCG: 0.2204
+
+[BM25] bm25_1.2_0.75.txt
+  P@10: 0.3000 | R@10: 0.1126 | F1: 0.1624 | NDCG: 0.1959
+
+[BM25] bm25_sentiment_ml_1.2_0.75_a0.0.txt
+  P@10: 0.3000 | R@10: 0.1126 | F1: 0.1624 | NDCG: 0.1959
+
+[BM25] bm25_sentiment_ml_1.2_0.75_a0.2.txt
+  P@10: 0.3000 | R@10: 0.1126 | F1: 0.1624 | NDCG: 0.1949
+
+[BM25] bm25_1.5_0.75.txt
+  P@10: 0.2900 | R@10: 0.1092 | F1: 0.1574 | NDCG: 0.1912
+
+[BM25] bm25_2.0_0.75.txt
+  P@10: 0.2800 | R@10: 0.1063 | F1: 0.1528 | NDCG: 0.1883
+
+[TFIDF] tfidf_1_2_nosub.txt
+  P@10: 0.2800 | R@10: 0.1006 | F1: 0.1470 | NDCG: 0.1802
+
+[BM25] bm25_sentiment_ml_1.2_0.75_a0.5.txt
+  P@10: 0.2700 | R@10: 0.0983 | F1: 0.1430 | NDCG: 0.1790
+
+[RRF/HYBRID] rrf_tfidf_bm25.txt
+  P@10: 0.2300 | R@10: 0.0886 | F1: 0.1268 | NDCG: 0.1773
+
+[BM25] bm25_sentiment_ml_1.2_0.75_a1.0.txt
+  P@10: 0.2600 | R@10: 0.0953 | F1: 0.1385 | NDCG: 0.1765
+
+[BM25] bm25_5.0_0.75.txt
+  P@10: 0.2300 | R@10: 0.0915 | F1: 0.1299 | NDCG: 0.1549
+
+[TFIDF] tfidf_1_1_sub.txt
+  P@10: 0.1700 | R@10: 0.0683 | F1: 0.0966 | NDCG: 0.1264
+
+[TFIDF] tfidf_1_1_nosub.txt
+  P@10: 0.1600 | R@10: 0.0628 | F1: 0.0895 | NDCG: 0.1219
+
+🔥 BEST RESULT:
+[TRANSFORMER] transformer_all_MiniLM_L6_v2.txt → NDCG: 0.3127
 
 ============================================================
 
 ===== QRELS: RATIO =====
 
----- BM25 BEST ----
-P@10: 0.9700 | R@10: 0.1590 | F1: 0.2664 | NDCG: 0.9782
+[TRANSFORMER] transformer_all_MiniLM_L6_v2.txt
+  P@10: 0.3200 | R@10: 0.1289 | F1: 0.1826 | NDCG: 0.2909
 
----- RRF (TF-IDF + BM25) ----
-P@10: 0.8600 | R@10: 0.1345 | F1: 0.2276 | NDCG: 0.8772
+[TRANSFORMER] transformer_rerank_all_MiniLM_L6_v2_cross_encoder_ms_marco_MiniLM_L_6_v2_c100.txt
+  P@10: 0.3500 | R@10: 0.1441 | F1: 0.2027 | NDCG: 0.2846
 
-👉 BM25 WIN
+[RRF/HYBRID] hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt
+  P@10: 0.3600 | R@10: 0.1370 | F1: 0.1970 | NDCG: 0.2629
+
+[TFIDF] tfidf_1_2_sub.txt
+  P@10: 0.3400 | R@10: 0.1285 | F1: 0.1849 | NDCG: 0.2064
+
+[BM25] bm25_1.2_0.75.txt
+  P@10: 0.3000 | R@10: 0.1126 | F1: 0.1624 | NDCG: 0.1827
+
+[BM25] bm25_sentiment_ml_1.2_0.75_a0.0.txt
+  P@10: 0.3000 | R@10: 0.1126 | F1: 0.1624 | NDCG: 0.1827
+
+[BM25] bm25_sentiment_ml_1.2_0.75_a0.2.txt
+  P@10: 0.3000 | R@10: 0.1126 | F1: 0.1624 | NDCG: 0.1815
+
+[BM25] bm25_1.5_0.75.txt
+  P@10: 0.2900 | R@10: 0.1092 | F1: 0.1574 | NDCG: 0.1792
+
+[BM25] bm25_2.0_0.75.txt
+  P@10: 0.2800 | R@10: 0.1063 | F1: 0.1528 | NDCG: 0.1751
+
+[TFIDF] tfidf_1_2_nosub.txt
+  P@10: 0.2800 | R@10: 0.1006 | F1: 0.1470 | NDCG: 0.1673
+
+[BM25] bm25_sentiment_ml_1.2_0.75_a0.5.txt
+  P@10: 0.2700 | R@10: 0.0983 | F1: 0.1430 | NDCG: 0.1654
+
+[RRF/HYBRID] rrf_tfidf_bm25.txt
+  P@10: 0.2300 | R@10: 0.0886 | F1: 0.1268 | NDCG: 0.1649
+
+[BM25] bm25_sentiment_ml_1.2_0.75_a1.0.txt
+  P@10: 0.2600 | R@10: 0.0953 | F1: 0.1385 | NDCG: 0.1626
+
+[BM25] bm25_5.0_0.75.txt
+  P@10: 0.2300 | R@10: 0.0915 | F1: 0.1299 | NDCG: 0.1421
+
+[TFIDF] tfidf_1_1_sub.txt
+  P@10: 0.1700 | R@10: 0.0683 | F1: 0.0966 | NDCG: 0.1135
+
+[TFIDF] tfidf_1_1_nosub.txt
+  P@10: 0.1600 | R@10: 0.0628 | F1: 0.0895 | NDCG: 0.1062
+
+🔥 BEST RESULT:
+[TRANSFORMER] transformer_all_MiniLM_L6_v2.txt → NDCG: 0.2909
 
 ============================================================
 

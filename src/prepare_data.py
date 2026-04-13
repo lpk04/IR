@@ -2,14 +2,25 @@ import json
 import re
 from tqdm import tqdm
 
-from src.config import (
-    YELP_REVIEW_FILE,
-    REVIEW_RAW_FILE,
-    REVIEW_PROCESSED_FILE,
-    TRACE_DIR,
-    TRACE_FILE,
-    MAX_DOCS
-)
+try:
+    from config import (
+        YELP_REVIEW_FILE,
+        REVIEW_RAW_FILE,
+        REVIEW_PROCESSED_FILE,
+        TRACE_DIR,
+        TRACE_FILE,
+        MAX_DOCS,
+    )
+except Exception:
+    # Support running as a package (python -m src.prepare_data)
+    from .config import (
+        YELP_REVIEW_FILE,
+        REVIEW_RAW_FILE,
+        REVIEW_PROCESSED_FILE,
+        TRACE_DIR,
+        TRACE_FILE,
+        MAX_DOCS,
+    )
 
 from nltk.corpus import stopwords, wordnet
 from nltk.tokenize import word_tokenize

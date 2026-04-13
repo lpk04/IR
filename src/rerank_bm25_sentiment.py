@@ -9,6 +9,8 @@ from config import (
     QUERY_TEXT_FILE,
     RUNS_SEARCH_BM25_DIR,
     BM25_SEARCH_TRACE_DIR,
+    SENTIMENT_MODEL_PATH,
+    VECTORIZER_PATH,
     get_bm25_paths
 )
 
@@ -19,11 +21,9 @@ from prepare_data import preprocess_text
 # LOAD SENTIMENT MODEL (FIX PATH)
 # =========================
 def load_sentiment_model():
-    model_path = r"D:\IR\demo\models\logistic_regression.joblib"
-    vectorizer_path = r"D:\IR\demo\models\logistic_regression_vectorizer.joblib"
 
-    model = joblib.load(model_path)
-    vectorizer = joblib.load(vectorizer_path)
+    model = joblib.load(SENTIMENT_MODEL_PATH)
+    vectorizer = joblib.load(VECTORIZER_PATH)
 
     return model, vectorizer
 

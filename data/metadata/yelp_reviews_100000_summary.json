@@ -1,0 +1,27 @@
+{
+  "input_file": "D:\\THTT\\IR-main\\IR\\data\\raw\\yelp_reviews_100000.jsonl",
+  "dataset": "yelp_reviews_100000",
+  "preferred_text_field": null,
+  "id_fields": [
+    "review_id"
+  ],
+  "records_seen": 100000,
+  "valid_records": 100000,
+  "malformed_records": 0,
+  "missing_text_records": 0,
+  "empty_text_records": 0,
+  "records_with_tokens": 100000,
+  "total_tokens": 10329605,
+  "max_token_count": 1041,
+  "min_token_count": 1,
+  "rating_distribution": {
+    "3.0": 11362,
+    "5.0": 44392,
+    "4.0": 25337,
+    "1.0": 10921,
+    "2.0": 7988
+  },
+  "output_metadata_file": "D:\\THTT\\IR-main\\IR\\data\\metadata\\yelp_reviews_100000_metadata.jsonl",
+  "output_summary_file": "D:\\THTT\\IR-main\\IR\\data\\metadata\\yelp_reviews_100000_summary.json",
+  "average_token_count": 103.296
+}
