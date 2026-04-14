@@ -31,7 +31,7 @@ REVIEW_RAW_FILE_CHANGED = RAW_DATA_DIR / "yelp_reviews_100000_changed.jsonl"
 # REVIEW_PROCESSED_FILE = PROCESSED_DATA_DIR / "processed_review.jsonl"
 REVIEW_PROCESSED_FILE = PROCESSED_DATA_DIR / "yelp_reviews_100000_processed.jsonl"
 REVIEW_TRANSFORMER_PROCESSED_FILE = PROCESSED_DATA_DIR / "yelp_reviews_100000_transformer_processed.jsonl"
-
+REVIEW_MERGERED_PROCESSED_FILE = PROCESSED_DATA_DIR / "yelp_reviews_100000_merged.jsonl"
 # Sentiment
 REVIEW_SENTIMENT_FILE = PROCESSED_DATA_DIR / "yelp_reviews_100000_sentiment.jsonl"
 # REVIEW_SENTIMENT_FILE_PROCESSED = PROCESSED_DATA_DIR / "processed_review_sentiment.jsonl"
@@ -118,6 +118,15 @@ BM25_TRACE_DIR = TRACE_DIR / "index_bm25"
 
 def get_bm25_paths(k1, b):
     name = f"bm25_{k1}_{b}"
+
+    return {
+        "model": BM25_INDEX_DIR / f"{name}.pkl",
+        "ids": BM25_INDEX_DIR / f"{name}_doc_ids.pkl",
+        "trace": BM25_TRACE_DIR / f"{name}.txt"
+    }
+    
+def get_bm25_app_paths(k1, b):
+    name = f"bm25_app_{k1}_{b}"
 
     return {
         "model": BM25_INDEX_DIR / f"{name}.pkl",

@@ -220,12 +220,11 @@ if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
 
 from src.prepare_data import preprocess_text
-from src.config import get_bm25_paths, REVIEW_PROCESSED_FILE, REVIEW_RAW_FILE_CHANGED
+from src.config import get_bm25_app_paths, REVIEW_MERGERED_PROCESSED_FILE
 
 app = Flask(__name__)
 
 bm25, doc_ids = None, None
-raw_docs = {}
 doc_sentiment = {}
 processed_docs = []          # ← NEW: full processed documents in BM25 order
 model = None
@@ -234,24 +233,17 @@ vectorizer = None
 
 # ================= LOAD =================
 def load_resources():
-    global bm25, doc_ids, model, vectorizer, raw_docs, doc_sentiment, processed_docs
+    global bm25, doc_ids, model, vectorizer, doc_sentiment, processed_docs
 
-    paths = get_bm25_paths(1.2, 0.75)
+    paths = get_bm25_app_paths(5.0, 0.75)
 
     bm25 = pickle.load(open(paths["model"], "rb"))
     doc_ids = pickle.load(open(paths["ids"], "rb"))
 
-    # RAW documents
-    raw_docs = {}
-    with open(REVIEW_PROCESSED_FILE, "r", encoding="utf-8") as f:
-        for line in f:
-            d = json.loads(line)
-            raw_docs[str(d["doc_id"])] = d["text"]
-
     # PROCESSED documents (in exact same order as BM25 index)
     processed_docs = []
     doc_sentiment = {}
-    with open(REVIEW_PROCESSED_FILE, "r", encoding="utf-8") as f:
+    with open(REVIEW_MERGERED_PROCESSED_FILE, "r", encoding="utf-8") as f:
         for line in f:
             d = json.loads(line)
             processed_docs.append(d)                                 # ← retrieve processed doc
@@ -261,7 +253,7 @@ def load_resources():
     model = joblib.load(os.path.join(BASE_DIR, "models", "logistic_regression.joblib"))
     vectorizer = joblib.load(os.path.join(BASE_DIR, "models", "logistic_regression_vectorizer.joblib"))
 
-    print(f"✅ Loaded {len(processed_docs)} processed docs | {len(raw_docs)} raw docs")
+    print(f"✅ Loaded {len(processed_docs)} processed docs")
 
 
 # ================= SENTIMENT =================
@@ -273,7 +265,7 @@ def predict_query_sentiment(query):
 
 
 # ================= SEARCH (CHANGED LOGIC) =================
-def search(query, alpha=5.0):
+def search(query, alpha=0.2):
     q_clean = preprocess_text(query)
     tokens = q_clean.split()
 
@@ -287,11 +279,9 @@ def search(query, alpha=5.0):
     results = []
 
     for i in top_idx:
-        # === NEW LOGIC ===
-        # 1. Retrieve the processed document using BM25
+ 
         proc_doc = processed_docs[i]
 
-        # 2. Match doc_id of the retrieved processed document to raw file
         doc_id = str(proc_doc["doc_id"])
 
         base_score = scores[i]
@@ -343,7 +333,7 @@ def home():
         data = []
         for doc_id, score in top10:
             data.append({
-                "raw_text": raw_docs.get(doc_id, ""),
+                "raw_text": processed_docs[doc_ids.index(doc_id)]["raw_text"], 
                 "score": round(score, 4),
                 "sent": doc_sentiment.get(doc_id, "neutral")
             })
@@ -355,7 +345,7 @@ def home():
         random.shuffle(candidates)
 
         all_opposite = [{
-            "text": raw_docs.get(d[0], ""),
+            "text": processed_docs[doc_ids.index(d[0])]["raw_text"],
             "sent": doc_sentiment.get(d[0], "neutral")
         } for d in candidates]
 
