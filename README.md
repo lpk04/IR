@@ -107,7 +107,15 @@ The pipeline includes:
 
 ---
 
-## 6. Notes
+## 6. Lauch app
+
+```bash
+py app\app.py
+```
+
+---
+
+## 7. Notes
 
 * Ensure preprocessing steps are executed before running retrieval pipelines.
 * Semantic and hybrid pipelines require SentenceTransformer models.
@@ -115,8 +123,7 @@ The pipeline includes:
 
 ---
 
-## 7. Environment
+## 8. Environment
 
-* Python 3.8+
+* Python 3.10+
 * Recommended: CUDA-enabled GPU for embedding generation
-* Minimum

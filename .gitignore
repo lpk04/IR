@@ -3,7 +3,3 @@ data/*.jsonl
 venv/
 __pycache__/
 trace/
-data/index/
-*.npy
-data/raw/
-data/processed/
