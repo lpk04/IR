@@ -22,13 +22,13 @@ def main():
     # 1. Data Preparation (Transformer)
     # =========================
     # Run if you want to prepare data for transformer-based retrieval (takes time) - only need to run once
-    # run_script("src/prepare_data_transformer.py")
+    run_script("src/prepare_data_transformer.py")
 
     # =========================
     # 2. Indexing (Dense Embeddings)
     # =========================
     # Run if you want to build a new transformer index (takes time) - only need to run once
-    # run_script("src/index_transformer.py")
+    run_script("src/index_transformer.py")
 
     # =========================
     # 3. Semantic Search Variants

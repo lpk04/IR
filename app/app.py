@@ -227,34 +227,41 @@ app = Flask(__name__)
 bm25, doc_ids = None, None
 raw_docs = {}
 doc_sentiment = {}
+processed_docs = []          # ← NEW: full processed documents in BM25 order
 model = None
 vectorizer = None
 
 
 # ================= LOAD =================
 def load_resources():
-    global bm25, doc_ids, model, vectorizer, raw_docs, doc_sentiment
+    global bm25, doc_ids, model, vectorizer, raw_docs, doc_sentiment, processed_docs
 
     paths = get_bm25_paths(1.2, 0.75)
 
     bm25 = pickle.load(open(paths["model"], "rb"))
     doc_ids = pickle.load(open(paths["ids"], "rb"))
 
-    # RAW
-    with open(REVIEW_RAW_FILE_CHANGED, "r", encoding="utf-8") as f:
+    # RAW documents
+    raw_docs = {}
+    with open(REVIEW_PROCESSED_FILE, "r", encoding="utf-8") as f:
         for line in f:
             d = json.loads(line)
             raw_docs[str(d["doc_id"])] = d["text"]
 
-    # SENTIMENT
+    # PROCESSED documents (in exact same order as BM25 index)
+    processed_docs = []
+    doc_sentiment = {}
     with open(REVIEW_PROCESSED_FILE, "r", encoding="utf-8") as f:
         for line in f:
             d = json.loads(line)
+            processed_docs.append(d)                                 # ← retrieve processed doc
             if "sentiment" in d:
                 doc_sentiment[str(d["doc_id"])] = d["sentiment"]
 
     model = joblib.load(os.path.join(BASE_DIR, "models", "logistic_regression.joblib"))
     vectorizer = joblib.load(os.path.join(BASE_DIR, "models", "logistic_regression_vectorizer.joblib"))
+
+    print(f"✅ Loaded {len(processed_docs)} processed docs | {len(raw_docs)} raw docs")
 
 
 # ================= SENTIMENT =================
@@ -265,23 +272,28 @@ def predict_query_sentiment(query):
     return "positive" if pred == 1 else "negative"
 
 
-# ================= SEARCH (OPTIMIZED) =================
+# ================= SEARCH (CHANGED LOGIC) =================
 def search(query, alpha=5.0):
     q_clean = preprocess_text(query)
     tokens = q_clean.split()
 
     q_sent = predict_query_sentiment(query)
 
-    # 🚀 tính score 1 lần
     scores = bm25.get_scores(tokens)
 
-    # 🚀 lấy top100 nhanh bằng numpy
+    # Top 100 indices
     top_idx = np.argpartition(scores, -100)[-100:]
 
     results = []
 
     for i in top_idx:
-        doc_id = str(doc_ids[i])
+        # === NEW LOGIC ===
+        # 1. Retrieve the processed document using BM25
+        proc_doc = processed_docs[i]
+
+        # 2. Match doc_id of the retrieved processed document to raw file
+        doc_id = str(proc_doc["doc_id"])
+
         base_score = scores[i]
 
         doc_sent = doc_sentiment.get(doc_id, "neutral")
@@ -296,7 +308,7 @@ def search(query, alpha=5.0):
         final = base_score + alpha * boost
         results.append((doc_id, final))
 
-    # chỉ sort 100 phần tử
+    # Sort only 100 items
     results = sorted(results, key=lambda x: x[1], reverse=True)
 
     top10 = results[:10]
@@ -364,6 +376,5 @@ def home():
 
 # ================= RUN =================
 if __name__ == "__main__":
-    
     load_resources()
     app.run(debug=True, use_reloader=False)
