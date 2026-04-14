@@ -99,7 +99,7 @@ py src\tools\pipeline_hybrid.py
 The pipeline includes:
 
 * Raw data transformation (Yelp format normalization)
-* Candidate pool construction
+* Candidate pool coznzstruction
 * Qrels generation (TREC standard)
 * Lexical retrieval (BM25 / TF-IDF)
 * Semantic retrieval (Sentence Transformers)
