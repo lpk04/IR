@@ -3,7 +3,7 @@ import argparse
 from pathlib import Path
 import numpy as np
 
-from search_transformer import build_embedding_index, save_index
+from search_transformer_no_cross import build_embedding_index, save_index
 from config import (
     REVIEW_TRANSFORMER_PROCESSED_FILE,
     TRANSFORMER_INDEX_DIR,

@@ -74,9 +74,9 @@ def clean_text(text):
 
 
 # =========================
-# 3. Convert rating → label
+# 3. Convert rating → sentiment
 # =========================
-def rating_to_label(r, mode="binary"):
+def rating_to_sentiment(r, mode="binary"):
     if mode == "binary":
         if r <= 2:
             return "negative"
@@ -110,10 +110,10 @@ def process_file(input_path, output_path, mode="binary"):
             text = data.get("text", "")
             rating = data.get("rating", 0)
 
-            label = rating_to_label(rating, mode)
+            sentiment = rating_to_sentiment(rating, mode)
 
             # bỏ neutral nếu binary
-            if label is None:
+            if sentiment is None:
                 continue
 
             cleaned_text = clean_text(text)
@@ -121,7 +121,8 @@ def process_file(input_path, output_path, mode="binary"):
             new_data = {
                 "doc_id": data.get("doc_id"),
                 "text": cleaned_text,
-                "label": label
+                "rating": rating,
+                "sentiment": sentiment
             }
 
             fout.write(json.dumps(new_data) + "\n")
@@ -135,8 +136,13 @@ def process_file(input_path, output_path, mode="binary"):
 # 5. MAIN
 # =========================
 if __name__ == "__main__":
-    INPUT_FILE = r"D:\IR\demo\data\review.jsonl"
-    OUTPUT_FILE = r"D:\IR\demo\data\processed\review_labeled.jsonl"
+    from pathlib import Path
+
+    # Project root (adjust if script is nested)
+    BASE_DIR = Path(__file__).resolve().parents[2]
+
+    INPUT_FILE = BASE_DIR / "data" / "yelp_reviews_100000_changed.jsonl"
+    OUTPUT_FILE = BASE_DIR / "data" / "processed" / "yelp_reviews_100000_sentiment.jsonl"
 
     # mode = "binary" (khuyên dùng) hoặc "multiclass"
     process_file(INPUT_FILE, OUTPUT_FILE, mode="binary")

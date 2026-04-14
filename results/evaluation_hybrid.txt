@@ -1,33 +1,56 @@
 
+===== QRELS: DEFAULT =====
+
+---- HYBRID (BM25 + TRANSFORMER) ----
+hybrid_bm25_1.2_0.75_all_transformers_rrf.txt
+  P@10: 0.9800 | R@10: 0.1856 | F1@10: 0.3119 | NDCG@10: 0.9329
+
+hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt
+  P@10: 0.8900 | R@10: 0.1683 | F1@10: 0.2829 | NDCG@10: 0.7344
+
+🔥 BEST HYBRID (by NDCG):
+hybrid_bm25_1.2_0.75_all_transformers_rrf.txt → NDCG@10: 0.9329
+
+============================================================
+
 ===== QRELS: KEYWORD =====
 
 ---- HYBRID (BM25 + TRANSFORMER) ----
+hybrid_bm25_1.2_0.75_all_transformers_rrf.txt
+  P@10: 0.9800 | R@10: 0.1856 | F1@10: 0.3119 | NDCG@10: 0.9329
+
 hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt
-  P@10: 0.6400 | R@10: 0.2558 | F1@10: 0.3627 | NDCG@10: 0.5007
+  P@10: 0.8900 | R@10: 0.1683 | F1@10: 0.2829 | NDCG@10: 0.7344
 
 🔥 BEST HYBRID (by NDCG):
-hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt → NDCG@10: 0.5007
+hybrid_bm25_1.2_0.75_all_transformers_rrf.txt → NDCG@10: 0.9329
 
 ============================================================
 
 ===== QRELS: COUNT =====
 
 ---- HYBRID (BM25 + TRANSFORMER) ----
+hybrid_bm25_1.2_0.75_all_transformers_rrf.txt
+  P@10: 0.9800 | R@10: 0.1856 | F1@10: 0.3119 | NDCG@10: 0.9329
+
 hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt
-  P@10: 0.6400 | R@10: 0.2558 | F1@10: 0.3627 | NDCG@10: 0.5036
+  P@10: 0.8900 | R@10: 0.1683 | F1@10: 0.2829 | NDCG@10: 0.7344
 
 🔥 BEST HYBRID (by NDCG):
-hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt → NDCG@10: 0.5036
+hybrid_bm25_1.2_0.75_all_transformers_rrf.txt → NDCG@10: 0.9329
 
 ============================================================
 
 ===== QRELS: RATIO =====
 
 ---- HYBRID (BM25 + TRANSFORMER) ----
+hybrid_bm25_1.2_0.75_all_transformers_rrf.txt
+  P@10: 0.9800 | R@10: 0.1856 | F1@10: 0.3119 | NDCG@10: 0.9329
+
 hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt
-  P@10: 0.6400 | R@10: 0.2558 | F1@10: 0.3627 | NDCG@10: 0.4913
+  P@10: 0.8900 | R@10: 0.1683 | F1@10: 0.2829 | NDCG@10: 0.7344
 
 🔥 BEST HYBRID (by NDCG):
-hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt → NDCG@10: 0.4913
+hybrid_bm25_1.2_0.75_all_transformers_rrf.txt → NDCG@10: 0.9329
 
 ============================================================

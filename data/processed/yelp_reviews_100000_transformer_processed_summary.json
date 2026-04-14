@@ -1,7 +1,7 @@
 {
-  "started_at": "2026-04-13T10:42:37.694744+00:00",
-  "finished_at": "2026-04-13T10:42:59.681006+00:00",
-  "elapsed_seconds": 21.9863,
+  "started_at": "2026-04-14T08:27:24.295071+00:00",
+  "finished_at": "2026-04-14T08:37:21.197008+00:00",
+  "elapsed_seconds": 596.9025,
   "input_file": "D:\\THTT\\IR-main\\IR\\data\\raw\\yelp_reviews_100000.jsonl",
   "output_file": "D:\\THTT\\IR-main\\IR\\data\\processed\\yelp_reviews_100000_transformer_processed.jsonl",
   "trace_file": "D:\\THTT\\IR-main\\IR\\trace\\yelp_reviews_100000_processed.txt",

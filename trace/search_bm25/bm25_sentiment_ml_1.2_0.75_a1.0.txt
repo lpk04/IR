@@ -1,142 +1,142 @@
 ===== BM25 + ML Sentiment (alpha=1.0) =====
 
 Query: cheap sushi near me | QSent: positive
-  Rank 1: Doc 50586 | Score: 12.6379 | DocSent: positive
-  Rank 2: Doc 4558 | Score: 12.5060 | DocSent: positive
-  Rank 3: Doc 1886 | Score: 12.3993 | DocSent: positive
-  Rank 4: Doc 48234 | Score: 12.3718 | DocSent: positive
-  Rank 5: Doc 51273 | Score: 12.0843 | DocSent: positive
-  Rank 6: Doc 55076 | Score: 12.0843 | DocSent: positive
-  Rank 7: Doc 9635 | Score: 11.6617 | DocSent: positive
-  Rank 8: Doc 51857 | Score: 11.5526 | DocSent: positive
-  Rank 9: Doc 89109 | Score: 11.5467 | DocSent: positive
-  Rank 10: Doc 26104 | Score: 11.4754 | DocSent: positive
+  Rank 1: Doc 50584 | Score: 12.6026 | DocSent: positive
+  Rank 2: Doc 4557 | Score: 12.4373 | DocSent: positive
+  Rank 3: Doc 48232 | Score: 12.4270 | DocSent: positive
+  Rank 4: Doc 1886 | Score: 12.3350 | DocSent: positive
+  Rank 5: Doc 55074 | Score: 12.1345 | DocSent: positive
+  Rank 6: Doc 51271 | Score: 12.0554 | DocSent: positive
+  Rank 7: Doc 9633 | Score: 11.7152 | DocSent: positive
+  Rank 8: Doc 89102 | Score: 11.6195 | DocSent: positive
+  Rank 9: Doc 26102 | Score: 11.5361 | DocSent: positive
+  Rank 10: Doc 51855 | Score: 11.4678 | DocSent: positive
 
 --------------------------------------------------
 
 Query: bad service restaurant | QSent: negative
-  Rank 1: Doc 42549 | Score: 9.2061 | DocSent: negative
-  Rank 2: Doc 74623 | Score: 8.9387 | DocSent: negative
-  Rank 3: Doc 45944 | Score: 8.9275 | DocSent: negative
-  Rank 4: Doc 99034 | Score: 8.7012 | DocSent: negative
-  Rank 5: Doc 94148 | Score: 8.6005 | DocSent: negative
-  Rank 6: Doc 16974 | Score: 8.5667 | DocSent: negative
-  Rank 7: Doc 59632 | Score: 8.4690 | DocSent: negative
-  Rank 8: Doc 73016 | Score: 8.3816 | DocSent: negative
-  Rank 9: Doc 68260 | Score: 8.2541 | DocSent: negative
-  Rank 10: Doc 63568 | Score: 8.2475 | DocSent: negative
+  Rank 1: Doc 42547 | Score: 9.2351 | DocSent: negative
+  Rank 2: Doc 45942 | Score: 8.9553 | DocSent: negative
+  Rank 3: Doc 74618 | Score: 8.8653 | DocSent: negative
+  Rank 4: Doc 99027 | Score: 8.7441 | DocSent: negative
+  Rank 5: Doc 16972 | Score: 8.5447 | DocSent: negative
+  Rank 6: Doc 59630 | Score: 8.5021 | DocSent: negative
+  Rank 7: Doc 94141 | Score: 8.4379 | DocSent: negative
+  Rank 8: Doc 95369 | Score: 8.2913 | DocSent: negative
+  Rank 9: Doc 63565 | Score: 8.2606 | DocSent: negative
+  Rank 10: Doc 73012 | Score: 8.2510 | DocSent: negative
 
 --------------------------------------------------
 
 Query: friendly staff cafe | QSent: positive
-  Rank 1: Doc 5681 | Score: 12.4679 | DocSent: positive
-  Rank 2: Doc 4896 | Score: 12.3715 | DocSent: positive
-  Rank 3: Doc 7742 | Score: 12.2069 | DocSent: positive
-  Rank 4: Doc 99476 | Score: 11.8137 | DocSent: positive
-  Rank 5: Doc 99614 | Score: 11.6887 | DocSent: positive
-  Rank 6: Doc 42040 | Score: 11.6887 | DocSent: positive
-  Rank 7: Doc 43666 | Score: 11.6575 | DocSent: positive
-  Rank 8: Doc 58933 | Score: 11.4934 | DocSent: positive
-  Rank 9: Doc 61076 | Score: 11.4471 | DocSent: positive
-  Rank 10: Doc 33743 | Score: 11.3304 | DocSent: positive
+  Rank 1: Doc 5680 | Score: 12.5248 | DocSent: positive
+  Rank 2: Doc 7741 | Score: 12.2504 | DocSent: positive
+  Rank 3: Doc 4895 | Score: 12.2457 | DocSent: positive
+  Rank 4: Doc 99469 | Score: 11.8652 | DocSent: positive
+  Rank 5: Doc 42038 | Score: 11.7426 | DocSent: positive
+  Rank 6: Doc 99607 | Score: 11.7426 | DocSent: positive
+  Rank 7: Doc 58931 | Score: 11.5665 | DocSent: positive
+  Rank 8: Doc 43664 | Score: 11.4100 | DocSent: positive
+  Rank 9: Doc 61074 | Score: 11.3909 | DocSent: positive
+  Rank 10: Doc 33741 | Score: 11.3909 | DocSent: positive
 
 --------------------------------------------------
 
 Query: best pizza in town | QSent: positive
-  Rank 1: Doc 89863 | Score: 13.1986 | DocSent: positive
-  Rank 2: Doc 79744 | Score: 13.0818 | DocSent: positive
-  Rank 3: Doc 89157 | Score: 12.7429 | DocSent: positive
-  Rank 4: Doc 99801 | Score: 12.6459 | DocSent: positive
-  Rank 5: Doc 91968 | Score: 12.6459 | DocSent: positive
-  Rank 6: Doc 9745 | Score: 12.5261 | DocSent: positive
-  Rank 7: Doc 8085 | Score: 12.4182 | DocSent: positive
-  Rank 8: Doc 59267 | Score: 12.2959 | DocSent: positive
-  Rank 9: Doc 16254 | Score: 12.2523 | DocSent: positive
-  Rank 10: Doc 87930 | Score: 12.2275 | DocSent: positive
+  Rank 1: Doc 89856 | Score: 13.2512 | DocSent: positive
+  Rank 2: Doc 79739 | Score: 13.1314 | DocSent: positive
+  Rank 3: Doc 89150 | Score: 12.7968 | DocSent: positive
+  Rank 4: Doc 91961 | Score: 12.6836 | DocSent: positive
+  Rank 5: Doc 99794 | Score: 12.6836 | DocSent: positive
+  Rank 6: Doc 9743 | Score: 12.5798 | DocSent: positive
+  Rank 7: Doc 8084 | Score: 12.4741 | DocSent: positive
+  Rank 8: Doc 16252 | Score: 12.3167 | DocSent: positive
+  Rank 9: Doc 59265 | Score: 12.2806 | DocSent: positive
+  Rank 10: Doc 87923 | Score: 12.2742 | DocSent: positive
 
 --------------------------------------------------
 
 Query: clean hotel room | QSent: positive
-  Rank 1: Doc 28063 | Score: 14.8610 | DocSent: positive
-  Rank 2: Doc 33715 | Score: 14.5376 | DocSent: positive
-  Rank 3: Doc 4698 | Score: 14.4220 | DocSent: positive
-  Rank 4: Doc 82113 | Score: 14.3727 | DocSent: positive
-  Rank 5: Doc 31405 | Score: 14.3633 | DocSent: positive
-  Rank 6: Doc 52177 | Score: 14.3558 | DocSent: positive
-  Rank 7: Doc 32173 | Score: 14.2809 | DocSent: positive
-  Rank 8: Doc 40378 | Score: 14.2456 | DocSent: positive
-  Rank 9: Doc 1656 | Score: 13.9213 | DocSent: positive
-  Rank 10: Doc 67538 | Score: 13.7108 | DocSent: positive
+  Rank 1: Doc 28061 | Score: 14.9110 | DocSent: positive
+  Rank 2: Doc 33713 | Score: 14.4758 | DocSent: positive
+  Rank 3: Doc 4697 | Score: 14.4692 | DocSent: positive
+  Rank 4: Doc 31403 | Score: 14.4088 | DocSent: positive
+  Rank 5: Doc 52175 | Score: 14.3878 | DocSent: positive
+  Rank 6: Doc 32171 | Score: 14.3364 | DocSent: positive
+  Rank 7: Doc 82107 | Score: 14.1582 | DocSent: positive
+  Rank 8: Doc 40376 | Score: 14.1107 | DocSent: positive
+  Rank 9: Doc 1656 | Score: 14.0123 | DocSent: positive
+  Rank 10: Doc 67535 | Score: 13.7697 | DocSent: positive
 
 --------------------------------------------------
 
 Query: I am looking for a cheap sushi restaurant with fresh ingredients | QSent: positive
-  Rank 1: Doc 51273 | Score: 18.6218 | DocSent: positive
-  Rank 2: Doc 14875 | Score: 16.8392 | DocSent: positive
-  Rank 3: Doc 45046 | Score: 16.5749 | DocSent: positive
-  Rank 4: Doc 6893 | Score: 15.9590 | DocSent: positive
-  Rank 5: Doc 24597 | Score: 15.5570 | DocSent: positive
-  Rank 6: Doc 14596 | Score: 15.1472 | DocSent: positive
-  Rank 7: Doc 50586 | Score: 15.0925 | DocSent: positive
-  Rank 8: Doc 10671 | Score: 14.9833 | DocSent: positive
-  Rank 9: Doc 15424 | Score: 14.9354 | DocSent: positive
-  Rank 10: Doc 62544 | Score: 14.8197 | DocSent: positive
+  Rank 1: Doc 51271 | Score: 18.5778 | DocSent: positive
+  Rank 2: Doc 14873 | Score: 16.9473 | DocSent: positive
+  Rank 3: Doc 45044 | Score: 16.6205 | DocSent: positive
+  Rank 4: Doc 6892 | Score: 16.0642 | DocSent: positive
+  Rank 5: Doc 24595 | Score: 15.6643 | DocSent: positive
+  Rank 6: Doc 14594 | Score: 15.2264 | DocSent: positive
+  Rank 7: Doc 50584 | Score: 15.0460 | DocSent: positive
+  Rank 8: Doc 10669 | Score: 15.0425 | DocSent: positive
+  Rank 9: Doc 15422 | Score: 15.0007 | DocSent: positive
+  Rank 10: Doc 3452 | Score: 14.7650 | DocSent: positive
 
 --------------------------------------------------
 
 Query: The service at this restaurant was really bad and disappointing | QSent: negative
-  Rank 1: Doc 3004 | Score: 13.7224 | DocSent: negative
-  Rank 2: Doc 71361 | Score: 13.6377 | DocSent: negative
-  Rank 3: Doc 82600 | Score: 13.3901 | DocSent: negative
-  Rank 4: Doc 39090 | Score: 13.0240 | DocSent: negative
-  Rank 5: Doc 98532 | Score: 12.6440 | DocSent: negative
-  Rank 6: Doc 29660 | Score: 12.2244 | DocSent: negative
-  Rank 7: Doc 3352 | Score: 11.7687 | DocSent: negative
-  Rank 8: Doc 19864 | Score: 11.5718 | DocSent: negative
-  Rank 9: Doc 16262 | Score: 11.4247 | DocSent: negative
-  Rank 10: Doc 51923 | Score: 11.4016 | DocSent: negative
+  Rank 1: Doc 3003 | Score: 13.7902 | DocSent: negative
+  Rank 2: Doc 71357 | Score: 13.6421 | DocSent: negative
+  Rank 3: Doc 82594 | Score: 12.7358 | DocSent: negative
+  Rank 4: Doc 39088 | Score: 12.6965 | DocSent: negative
+  Rank 5: Doc 29658 | Score: 12.2692 | DocSent: negative
+  Rank 6: Doc 3351 | Score: 11.7873 | DocSent: negative
+  Rank 7: Doc 19862 | Score: 11.6234 | DocSent: negative
+  Rank 8: Doc 51921 | Score: 11.4118 | DocSent: negative
+  Rank 9: Doc 16260 | Score: 11.3028 | DocSent: negative
+  Rank 10: Doc 65492 | Score: 11.0643 | DocSent: negative
 
 --------------------------------------------------
 
 Query: I want to find a cafe with very friendly staff and good coffee | QSent: positive
-  Rank 1: Doc 61076 | Score: 16.4357 | DocSent: positive
-  Rank 2: Doc 97984 | Score: 16.3454 | DocSent: positive
-  Rank 3: Doc 87565 | Score: 15.8386 | DocSent: positive
-  Rank 4: Doc 31960 | Score: 15.7253 | DocSent: positive
-  Rank 5: Doc 67789 | Score: 15.2429 | DocSent: positive
-  Rank 6: Doc 78390 | Score: 15.1584 | DocSent: positive
-  Rank 7: Doc 78513 | Score: 14.8461 | DocSent: positive
-  Rank 8: Doc 9459 | Score: 14.6525 | DocSent: positive
-  Rank 9: Doc 56310 | Score: 14.5936 | DocSent: positive
-  Rank 10: Doc 13938 | Score: 14.4860 | DocSent: positive
+  Rank 1: Doc 61074 | Score: 16.3627 | DocSent: positive
+  Rank 2: Doc 97977 | Score: 16.3228 | DocSent: positive
+  Rank 3: Doc 87558 | Score: 15.8736 | DocSent: positive
+  Rank 4: Doc 31958 | Score: 15.6695 | DocSent: positive
+  Rank 5: Doc 67786 | Score: 15.3444 | DocSent: positive
+  Rank 6: Doc 78385 | Score: 15.0466 | DocSent: positive
+  Rank 7: Doc 78508 | Score: 14.9490 | DocSent: positive
+  Rank 8: Doc 56308 | Score: 14.7098 | DocSent: positive
+  Rank 9: Doc 9457 | Score: 14.6948 | DocSent: positive
+  Rank 10: Doc 61738 | Score: 14.3904 | DocSent: positive
 
 --------------------------------------------------
 
 Query: This place has the best pizza I have ever tried in town | QSent: positive
-  Rank 1: Doc 91968 | Score: 16.1701 | DocSent: positive
-  Rank 2: Doc 79744 | Score: 15.7815 | DocSent: positive
-  Rank 3: Doc 990 | Score: 15.2961 | DocSent: positive
-  Rank 4: Doc 86862 | Score: 14.4617 | DocSent: positive
-  Rank 5: Doc 51046 | Score: 14.2832 | DocSent: positive
-  Rank 6: Doc 73165 | Score: 14.0609 | DocSent: positive
-  Rank 7: Doc 89863 | Score: 13.9989 | DocSent: positive
-  Rank 8: Doc 25834 | Score: 13.8293 | DocSent: positive
-  Rank 9: Doc 22202 | Score: 13.6301 | DocSent: positive
-  Rank 10: Doc 82470 | Score: 13.5195 | DocSent: positive
+  Rank 1: Doc 91961 | Score: 16.2191 | DocSent: positive
+  Rank 2: Doc 79739 | Score: 15.8458 | DocSent: positive
+  Rank 3: Doc 990 | Score: 15.3974 | DocSent: positive
+  Rank 4: Doc 86855 | Score: 14.5290 | DocSent: positive
+  Rank 5: Doc 51044 | Score: 14.3371 | DocSent: positive
+  Rank 6: Doc 73161 | Score: 14.1502 | DocSent: positive
+  Rank 7: Doc 89856 | Score: 14.0541 | DocSent: positive
+  Rank 8: Doc 22200 | Score: 13.7344 | DocSent: positive
+  Rank 9: Doc 25832 | Score: 13.6750 | DocSent: positive
+  Rank 10: Doc 36720 | Score: 13.5994 | DocSent: positive
 
 --------------------------------------------------
 
 Query: I love eating spicy noodles with strong flavor and rich broth | QSent: positive
-  Rank 1: Doc 85161 | Score: 24.3080 | DocSent: positive
-  Rank 2: Doc 16434 | Score: 23.2470 | DocSent: positive
-  Rank 3: Doc 86538 | Score: 22.9124 | DocSent: positive
-  Rank 4: Doc 43298 | Score: 20.7190 | DocSent: positive
-  Rank 5: Doc 1743 | Score: 19.6845 | DocSent: positive
-  Rank 6: Doc 62869 | Score: 18.8556 | DocSent: positive
-  Rank 7: Doc 63957 | Score: 18.4048 | DocSent: positive
-  Rank 8: Doc 46843 | Score: 18.3370 | DocSent: positive
-  Rank 9: Doc 75699 | Score: 18.1860 | DocSent: positive
-  Rank 10: Doc 74093 | Score: 17.9609 | DocSent: positive
+  Rank 1: Doc 85154 | Score: 24.0899 | DocSent: positive
+  Rank 2: Doc 86531 | Score: 22.7002 | DocSent: positive
+  Rank 3: Doc 16432 | Score: 22.5209 | DocSent: positive
+  Rank 4: Doc 43296 | Score: 20.8186 | DocSent: positive
+  Rank 5: Doc 1743 | Score: 19.4549 | DocSent: positive
+  Rank 6: Doc 62867 | Score: 19.0823 | DocSent: positive
+  Rank 7: Doc 46841 | Score: 18.4715 | DocSent: positive
+  Rank 8: Doc 63954 | Score: 18.4148 | DocSent: positive
+  Rank 9: Doc 75694 | Score: 18.3006 | DocSent: positive
+  Rank 10: Doc 74088 | Score: 18.1447 | DocSent: positive
 
 --------------------------------------------------
 

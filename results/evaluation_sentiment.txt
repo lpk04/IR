@@ -1,28 +1,406 @@
-===== SENTIMENT ALPHA COMPARISON =====
+===== EVALUATION WITH NDCG =====
 
-alpha_0.0 (BM25)
-  P@10: 0.3000
-  R@10: 0.1126
-  F1:   0.1624
-  NDCG: 0.1827
+===== QRELS: DEFAULT =====
 
-alpha_0.2
-  P@10: 0.3000
-  R@10: 0.1126
-  F1:   0.1624
-  NDCG: 0.1815
+---- TF-IDF ----
 
-alpha_0.5
-  P@10: 0.2700
-  R@10: 0.0983
-  F1:   0.1430
-  NDCG: 0.1654
+tfidf_1_1_nosub.txt:
+  Precision@10: 0.9900
+  Recall@10:    0.1876
+  F1@10:        0.3153
+  NDCG@10:      0.8845
 
-alpha_1.0
-  P@10: 0.2600
-  R@10: 0.0953
-  F1:   0.1385
-  NDCG: 0.1626
+tfidf_1_1_sub.txt:
+  Precision@10: 0.9900
+  Recall@10:    0.1876
+  F1@10:        0.3153
+  NDCG@10:      0.8652
 
-🔥 BEST MODEL:
-alpha_0.0 (BM25) → NDCG: 0.1827
+tfidf_1_2_nosub.txt:
+  Precision@10: 0.9800
+  Recall@10:    0.1859
+  F1@10:        0.3123
+  NDCG@10:      0.7226
+
+tfidf_1_2_sub.txt:
+  Precision@10: 0.9800
+  Recall@10:    0.1859
+  F1@10:        0.3123
+  NDCG@10:      0.7322
+
+---- BM25 ----
+
+bm25_1.2_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8670
+
+bm25_1.5_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8769
+
+bm25_2.0_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8894
+
+bm25_5.0_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.9185
+
+bm25_sentiment_ml_1.2_0.75_a0.0.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8670
+
+bm25_sentiment_ml_1.2_0.75_a0.2.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8661
+
+bm25_sentiment_ml_1.2_0.75_a0.5.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8618
+
+bm25_sentiment_ml_1.2_0.75_a1.0.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8581
+
+---- RRF ----
+
+hybrid_bm25_1.2_0.75_all_transformers_rrf.txt:
+  Precision@10: 0.9800
+  Recall@10:    0.1856
+  F1@10:        0.3119
+  NDCG@10:      0.8940
+
+hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt:
+  Precision@10: 0.8900
+  Recall@10:    0.1683
+  F1@10:        0.2829
+  NDCG@10:      0.5958
+
+rrf_tfidf_bm25.txt:
+  Precision@10: 0.9200
+  Recall@10:    0.1749
+  F1@10:        0.2938
+  NDCG@10:      0.8985
+
+
+============================================================
+
+===== QRELS: KEYWORD =====
+
+---- TF-IDF ----
+
+tfidf_1_1_nosub.txt:
+  Precision@10: 0.9900
+  Recall@10:    0.1876
+  F1@10:        0.3153
+  NDCG@10:      0.8845
+
+tfidf_1_1_sub.txt:
+  Precision@10: 0.9900
+  Recall@10:    0.1876
+  F1@10:        0.3153
+  NDCG@10:      0.8652
+
+tfidf_1_2_nosub.txt:
+  Precision@10: 0.9800
+  Recall@10:    0.1859
+  F1@10:        0.3123
+  NDCG@10:      0.7226
+
+tfidf_1_2_sub.txt:
+  Precision@10: 0.9800
+  Recall@10:    0.1859
+  F1@10:        0.3123
+  NDCG@10:      0.7322
+
+---- BM25 ----
+
+bm25_1.2_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8670
+
+bm25_1.5_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8769
+
+bm25_2.0_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8894
+
+bm25_5.0_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.9185
+
+bm25_sentiment_ml_1.2_0.75_a0.0.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8670
+
+bm25_sentiment_ml_1.2_0.75_a0.2.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8661
+
+bm25_sentiment_ml_1.2_0.75_a0.5.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8618
+
+bm25_sentiment_ml_1.2_0.75_a1.0.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8581
+
+---- RRF ----
+
+hybrid_bm25_1.2_0.75_all_transformers_rrf.txt:
+  Precision@10: 0.9800
+  Recall@10:    0.1856
+  F1@10:        0.3119
+  NDCG@10:      0.8940
+
+hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt:
+  Precision@10: 0.8900
+  Recall@10:    0.1683
+  F1@10:        0.2829
+  NDCG@10:      0.5958
+
+rrf_tfidf_bm25.txt:
+  Precision@10: 0.9200
+  Recall@10:    0.1749
+  F1@10:        0.2938
+  NDCG@10:      0.8985
+
+
+============================================================
+
+===== QRELS: COUNT =====
+
+---- TF-IDF ----
+
+tfidf_1_1_nosub.txt:
+  Precision@10: 0.9900
+  Recall@10:    0.1876
+  F1@10:        0.3153
+  NDCG@10:      0.8845
+
+tfidf_1_1_sub.txt:
+  Precision@10: 0.9900
+  Recall@10:    0.1876
+  F1@10:        0.3153
+  NDCG@10:      0.8652
+
+tfidf_1_2_nosub.txt:
+  Precision@10: 0.9800
+  Recall@10:    0.1859
+  F1@10:        0.3123
+  NDCG@10:      0.7226
+
+tfidf_1_2_sub.txt:
+  Precision@10: 0.9800
+  Recall@10:    0.1859
+  F1@10:        0.3123
+  NDCG@10:      0.7322
+
+---- BM25 ----
+
+bm25_1.2_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8670
+
+bm25_1.5_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8769
+
+bm25_2.0_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8894
+
+bm25_5.0_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.9185
+
+bm25_sentiment_ml_1.2_0.75_a0.0.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8670
+
+bm25_sentiment_ml_1.2_0.75_a0.2.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8661
+
+bm25_sentiment_ml_1.2_0.75_a0.5.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8618
+
+bm25_sentiment_ml_1.2_0.75_a1.0.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8581
+
+---- RRF ----
+
+hybrid_bm25_1.2_0.75_all_transformers_rrf.txt:
+  Precision@10: 0.9800
+  Recall@10:    0.1856
+  F1@10:        0.3119
+  NDCG@10:      0.8940
+
+hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt:
+  Precision@10: 0.8900
+  Recall@10:    0.1683
+  F1@10:        0.2829
+  NDCG@10:      0.5958
+
+rrf_tfidf_bm25.txt:
+  Precision@10: 0.9200
+  Recall@10:    0.1749
+  F1@10:        0.2938
+  NDCG@10:      0.8985
+
+
+============================================================
+
+===== QRELS: RATIO =====
+
+---- TF-IDF ----
+
+tfidf_1_1_nosub.txt:
+  Precision@10: 0.9900
+  Recall@10:    0.1876
+  F1@10:        0.3153
+  NDCG@10:      0.8845
+
+tfidf_1_1_sub.txt:
+  Precision@10: 0.9900
+  Recall@10:    0.1876
+  F1@10:        0.3153
+  NDCG@10:      0.8652
+
+tfidf_1_2_nosub.txt:
+  Precision@10: 0.9800
+  Recall@10:    0.1859
+  F1@10:        0.3123
+  NDCG@10:      0.7226
+
+tfidf_1_2_sub.txt:
+  Precision@10: 0.9800
+  Recall@10:    0.1859
+  F1@10:        0.3123
+  NDCG@10:      0.7322
+
+---- BM25 ----
+
+bm25_1.2_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8670
+
+bm25_1.5_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8769
+
+bm25_2.0_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8894
+
+bm25_5.0_0.75.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.9185
+
+bm25_sentiment_ml_1.2_0.75_a0.0.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8670
+
+bm25_sentiment_ml_1.2_0.75_a0.2.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8661
+
+bm25_sentiment_ml_1.2_0.75_a0.5.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8618
+
+bm25_sentiment_ml_1.2_0.75_a1.0.txt:
+  Precision@10: 1.0000
+  Recall@10:    0.1895
+  F1@10:        0.3184
+  NDCG@10:      0.8581
+
+---- RRF ----
+
+hybrid_bm25_1.2_0.75_all_transformers_rrf.txt:
+  Precision@10: 0.9800
+  Recall@10:    0.1856
+  F1@10:        0.3119
+  NDCG@10:      0.8940
+
+hybrid_bm25_1.2_0.75_transformer_all_MiniLM_L6_v2.txt:
+  Precision@10: 0.8900
+  Recall@10:    0.1683
+  F1@10:        0.2829
+  NDCG@10:      0.5958
+
+rrf_tfidf_bm25.txt:
+  Precision@10: 0.9200
+  Recall@10:    0.1749
+  F1@10:        0.2938
+  NDCG@10:      0.8985
+
+
+============================================================
+

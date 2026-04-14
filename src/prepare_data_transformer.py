@@ -12,8 +12,20 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import nltk
 from bs4 import BeautifulSoup
+from nltk import pos_tag
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
 from tqdm import tqdm
+
+# Try to import unidecode for transliteration; provide fallback if not available
+try:
+    from unidecode import unidecode
+except ImportError:
+    def unidecode(text: str) -> str:
+        """Fallback unidecode: return text as-is if library not available."""
+        return text
 
 try:
     from config import (
@@ -46,9 +58,13 @@ RE_URL = re.compile(r"https?://\S+|www\.\S+", re.IGNORECASE)
 RE_HTML_TAG = re.compile(r"<[^>]+>")
 RE_CTRL = re.compile(r"[\r\n\t\x00-\x1f\x7f]")
 RE_EXTRA_SPACE = re.compile(r"\s{2,}")
+RE_WORD = re.compile(r"[A-Za-z]{2,}")
 RE_ASCII_WORD = re.compile(r"[A-Za-z]{3,}")
 
 DEFAULT_TEXT_FIELDS = ("text", "review_text", "content", "body", "review")
+
+STOP_WORDS: set[str] | None = None
+LEMMATIZER: WordNetLemmatizer | None = None
 
 
 @dataclass
@@ -68,6 +84,17 @@ class PipelineStats:
     records_written: int = 0
     max_docs: int | None = None
     trace_limit: int = 20
+
+
+
+def init_runtime_resources() -> None:
+    global STOP_WORDS, LEMMATIZER
+
+    if STOP_WORDS is None:
+        STOP_WORDS = set(stopwords.words("english")) - {"not", "never", "none", "nothing"}
+
+    if LEMMATIZER is None:
+        LEMMATIZER = WordNetLemmatizer()
 
 
 def get_sentiment(rating: float) -> str:
@@ -97,9 +124,6 @@ def detect_text_field(record: dict[str, Any], preferred_field: str | None = None
 
 
 def is_english(text: str, min_ascii_ratio: float = 0.75, min_words: int = 5) -> bool:
-    """
-    Lightweight heuristic only. No language model, no heavy NLP.
-    """
     if not text:
         return False
 
@@ -113,12 +137,17 @@ def is_english(text: str, min_ascii_ratio: float = 0.75, min_words: int = 5) -> 
         return False
 
     ascii_word_count = len(RE_ASCII_WORD.findall(text))
+
+    # If there are enough ASCII words, consider it English.
     if ascii_word_count >= min_words:
         return True
 
-    if total_chars <= 60 and ascii_ratio >= 0.8 and ascii_word_count >= 1:
+    # Allow short but clearly ASCII texts (e.g., "Awesome", "Great food").
+    short_char_threshold = 60
+    if total_chars <= short_char_threshold and ascii_ratio >= 0.8 and ascii_word_count >= 1:
         return True
 
+    # Also accept very-high ASCII-ratio texts with at least one ASCII word.
     if ascii_ratio >= 0.95 and ascii_word_count >= 1:
         return True
 
@@ -126,19 +155,6 @@ def is_english(text: str, min_ascii_ratio: float = 0.75, min_words: int = 5) -> 
 
 
 def clean_base_text(text: str) -> str:
-    """
-    Minimal cleaning for transformer retrieval:
-    - decode HTML entities
-    - strip HTML tags
-    - remove URLs
-    - remove control characters
-    - normalize unicode
-    - collapse extra whitespace
-
-    Important:
-    No stemming, no stopword removal, no POS tagging, no lemmatization,
-    no lowercasing, and no token filtering.
-    """
     cleaned = html.unescape(text or "")
 
     if "<" in cleaned and ">" in cleaned:
@@ -150,9 +166,79 @@ def clean_base_text(text: str) -> str:
     cleaned = RE_URL.sub(" ", cleaned)
     cleaned = RE_CTRL.sub(" ", cleaned)
     cleaned = unicodedata.normalize("NFC", cleaned)
-    cleaned = normalize_whitespace(cleaned)
+    
+    # Transliterate non-ASCII characters (e.g., "jalapeño" -> "jalapeno", "café" -> "cafe")
+    cleaned = unidecode(cleaned)
 
-    return cleaned
+    kept_chars: list[str] = []
+    for char in cleaned:
+        codepoint = ord(char)
+
+        if codepoint < 128 and (
+            char.isalnum() or char in " '\".,!?-&()/\\%$:;+@#"
+        ):
+            kept_chars.append(char)
+
+    return normalize_whitespace("".join(kept_chars))
+
+
+def to_wordnet_pos(treebank_tag: str) -> str:
+    if treebank_tag.startswith("J"):
+        return "a"
+    if treebank_tag.startswith("V"):
+        return "v"
+    if treebank_tag.startswith("N"):
+        return "n"
+    if treebank_tag.startswith("R"):
+        return "r"
+    return "n"
+
+
+def lemmatize_word(token: str, tag: str) -> str:
+    init_runtime_resources()
+    assert LEMMATIZER is not None
+
+    token = token.lower()
+    pos = to_wordnet_pos(tag)
+
+    lemma = LEMMATIZER.lemmatize(token, pos)
+    if lemma != token:
+        return lemma
+
+    if pos != "n":
+        lemma = LEMMATIZER.lemmatize(token, "n")
+        if lemma != token:
+            return lemma
+
+    return token
+
+
+def preprocess_text(text: str) -> str:
+    init_runtime_resources()
+    assert STOP_WORDS is not None
+
+    strict_text = clean_base_text(text)
+    raw_tokens = RE_WORD.findall(strict_text)
+    if not raw_tokens:
+        return ""
+
+    semantic_tokens: list[str] = []
+    for token, tag in pos_tag(raw_tokens):
+        token_lower = token.lower()
+
+        if token_lower in STOP_WORDS:
+            continue
+
+        if not tag.startswith(("NN", "VB", "JJ", "RB")):
+            continue
+
+        lemma = lemmatize_word(token_lower, tag)
+        if len(lemma) <= 1 or lemma.isdigit():
+            continue
+
+        semantic_tokens.append(lemma)
+
+    return " ".join(semantic_tokens)
 
 
 def get_record_id(record: dict[str, Any], fallback_id: int) -> str:
@@ -192,7 +278,7 @@ def build_processed_record(
             "reason": "non_english",
         }
 
-    clean_text = clean_base_text(raw_text)
+    clean_text = preprocess_text(raw_text)
     if not clean_text:
         return None, {
             "review_line_no": review_line_no,
@@ -207,25 +293,29 @@ def build_processed_record(
     except (TypeError, ValueError):
         rating = 0.0
 
+
+    # canonical sequential document id exposed as `doc_id` (string)
     doc_id = str(output_id)
 
+    # Output record: include the requested minimal fields first
     output = {
         "doc_id": doc_id,
         "text": clean_text,
         "rating": rating,
         "sentiment": get_sentiment(rating),
+        # "review_line_no": review_line_no,
+        # "review_id": review_id,
     }
 
     trace_item = {
         "doc_id": doc_id,
+        # "review_line_no": review_line_no,
         "review_id": review_id,
         "status": "written",
         "rating": rating,
         "sentiment": output["sentiment"],
-        "raw_char_count": len(raw_text),
-        "raw_word_count": len(raw_text.split()),
-        "clean_char_count": len(clean_text),
-        "clean_word_count": len(clean_text.split()),
+        "raw_token_count": len(RE_WORD.findall(raw_text)),
+        "clean_token_count": len(clean_text.split()),
     }
 
     return output, trace_item
@@ -246,6 +336,8 @@ def process_data(
     trace_limit: int = 20,
     preferred_text_field: str | None = None,
 ) -> Path:
+    init_runtime_resources()
+
     input_file = Path(input_file)
     output_file = Path(output_file)
     output_file.parent.mkdir(parents=True, exist_ok=True)
@@ -257,7 +349,7 @@ def process_data(
     if trace_file is not None:
         trace_file = Path(trace_file)
         trace_file.parent.mkdir(parents=True, exist_ok=True)
-
+    # Ensure non-English trace file path exists
     non_english_trace = Path(TRANSFORMER_NON_ENGLISH_FILE)
     non_english_trace.parent.mkdir(parents=True, exist_ok=True)
 
@@ -354,9 +446,7 @@ class _null_context:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Prepare Yelp reviews for transformer-based retrieval with minimal text cleaning."
-    )
+    parser = argparse.ArgumentParser(description="Prepare Yelp reviews for transformer-based retrieval.")
     parser.add_argument("--input", type=Path, default=YELP_REVIEW_FILE)
     parser.add_argument("--output", type=Path, default=REVIEW_TRANSFORMER_PROCESSED_FILE)
     parser.add_argument("--trace", type=Path, default=TRANSFORMER_PREP_TRACE_FILE)

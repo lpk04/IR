@@ -13,6 +13,7 @@ from config import (
 # QRELS
 # =========================
 QRELS_FILES = {
+    "DEFAULT": RESULTS_DIR / "qrels.txt",
     "KEYWORD": RESULTS_DIR / "qrels_keyword.txt",
     "COUNT":   RESULTS_DIR / "qrels_count.txt",
     "RATIO":   RESULTS_DIR / "qrels_ratio.txt",

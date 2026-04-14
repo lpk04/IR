@@ -8,10 +8,12 @@ from config import RESULTS_DIR, RUNS_RRF_DIR
 # QRELS
 # =========================
 QRELS_FILES = {
+    "DEFAULT": RESULTS_DIR / "qrels.txt",
     "KEYWORD": RESULTS_DIR / "qrels_keyword.txt",
-    "COUNT": RESULTS_DIR / "qrels_count.txt",
-    "RATIO": RESULTS_DIR / "qrels_ratio.txt",
+    "COUNT":   RESULTS_DIR / "qrels_count.txt",
+    "RATIO":   RESULTS_DIR / "qrels_ratio.txt",
 }
+
 
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 

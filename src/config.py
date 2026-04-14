@@ -25,14 +25,16 @@ YELP_REVIEW_FILE = RAW_DATA_DIR / "yelp_reviews_100000.jsonl"
 
 # Extract (raw sau khi lấy từ Yelp)
 # REVIEW_RAW_FILE = DATA_DIR / "review.jsonl"
-REVIEW_RAW_FILE = RAW_DATA_DIR / "yelp_reviews_100000_cleaned.jsonl"
+REVIEW_RAW_FILE = RAW_DATA_DIR / "yelp_reviews_100000.jsonl"
+REVIEW_RAW_FILE_CHANGED = RAW_DATA_DIR / "yelp_reviews_100000_changed.jsonl"
 # Preprocessed
-REVIEW_PROCESSED_FILE = PROCESSED_DATA_DIR / "processed_review.jsonl"
+# REVIEW_PROCESSED_FILE = PROCESSED_DATA_DIR / "processed_review.jsonl"
+REVIEW_PROCESSED_FILE = PROCESSED_DATA_DIR / "yelp_reviews_100000_processed.jsonl"
 REVIEW_TRANSFORMER_PROCESSED_FILE = PROCESSED_DATA_DIR / "yelp_reviews_100000_transformer_processed.jsonl"
 
 # Sentiment
-REVIEW_SENTIMENT_FILE = PROCESSED_DATA_DIR / "review_labeled.jsonl"
-REVIEW_SENTIMENT_FILE_PROCESSED = PROCESSED_DATA_DIR / "processed_review_sentiment.jsonl"
+REVIEW_SENTIMENT_FILE = PROCESSED_DATA_DIR / "yelp_reviews_100000_sentiment.jsonl"
+# REVIEW_SENTIMENT_FILE_PROCESSED = PROCESSED_DATA_DIR / "processed_review_sentiment.jsonl"
 
 # =========================
 # MODEL

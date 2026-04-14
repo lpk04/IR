@@ -15,8 +15,13 @@ RUN_FILES = {
     "alpha_1.0": RUNS_SEARCH_BM25_DIR / "bm25_sentiment_ml_1.2_0.75_a1.0.txt",
 }
 
-QRELS_FILE = RESULTS_DIR / "qrels_ratio.txt"
-OUTPUT_FILE = RESULTS_DIR / "evaluation_sentiment.txt"
+QRELS_FILES = {
+    "DEFAULT": RESULTS_DIR / "qrels.txt",
+    "KEYWORD": RESULTS_DIR / "qrels_keyword.txt",
+    "COUNT":   RESULTS_DIR / "qrels_count.txt",
+    "RATIO":   RESULTS_DIR / "qrels_ratio.txt",
+}
+OUTPUT_FILE = RESULTS_DIR / "evaluation_sentiment_alpha.txt"
 
 
 # =========================
@@ -117,35 +122,26 @@ def evaluate(run, qrels_all):
 def main():
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
-    qrels = load_qrels(QRELS_FILE)
+    qrels_sets = {name: load_qrels(path) for name, path in QRELS_FILES.items()}
 
     results = []
 
-    for name, path in RUN_FILES.items():
+    for run_name, path in RUN_FILES.items():
         run = load_run(path)
-        p, r, f, n = evaluate(run, qrels)
 
-        results.append((name, p, r, f, n))
+        for qrels_name, qrels in qrels_sets.items():
+            p, r, f1_score, ndcg = evaluate(run, qrels)
+            results.append((run_name, qrels_name, p, r, f1_score, ndcg))
 
-    # =========================
-    # WRITE FILE
-    # =========================
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-
         f.write("===== SENTIMENT ALPHA COMPARISON =====\n\n")
 
-        for name, p, r, f1_score, ndcg in results:
-            f.write(f"{name}\n")
+        for run_name, qrels_name, p, r, f1_score, ndcg in results:
+            f.write(f"{run_name} | QRELS: {qrels_name}\n")
             f.write(f"  P@10: {p:.4f}\n")
             f.write(f"  R@10: {r:.4f}\n")
             f.write(f"  F1:   {f1_score:.4f}\n")
             f.write(f"  NDCG: {ndcg:.4f}\n\n")
-
-        # BEST
-        best = max(results, key=lambda x: x[4])
-
-        f.write("🔥 BEST MODEL:\n")
-        f.write(f"{best[0]} → NDCG: {best[4]:.4f}\n")
 
     print(f"✅ Saved → {OUTPUT_FILE}")
 

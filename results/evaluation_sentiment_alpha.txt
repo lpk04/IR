@@ -1,0 +1,98 @@
+===== SENTIMENT ALPHA COMPARISON =====
+
+alpha_0.0 (BM25) | QRELS: DEFAULT
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9224
+
+alpha_0.0 (BM25) | QRELS: KEYWORD
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9224
+
+alpha_0.0 (BM25) | QRELS: COUNT
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9224
+
+alpha_0.0 (BM25) | QRELS: RATIO
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9224
+
+alpha_0.2 | QRELS: DEFAULT
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9219
+
+alpha_0.2 | QRELS: KEYWORD
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9219
+
+alpha_0.2 | QRELS: COUNT
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9219
+
+alpha_0.2 | QRELS: RATIO
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9219
+
+alpha_0.5 | QRELS: DEFAULT
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9194
+
+alpha_0.5 | QRELS: KEYWORD
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9194
+
+alpha_0.5 | QRELS: COUNT
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9194
+
+alpha_0.5 | QRELS: RATIO
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9194
+
+alpha_1.0 | QRELS: DEFAULT
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9172
+
+alpha_1.0 | QRELS: KEYWORD
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9172
+
+alpha_1.0 | QRELS: COUNT
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9172
+
+alpha_1.0 | QRELS: RATIO
+  P@10: 1.0000
+  R@10: 0.1895
+  F1:   0.3184
+  NDCG: 0.9172
+

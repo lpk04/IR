@@ -1,10 +1,17 @@
-Q1: keyword=27, count=27, ratio=27
-Q2: keyword=50, count=50, ratio=50
-Q3: keyword=43, count=43, ratio=43
-Q4: keyword=45, count=45, ratio=45
-Q5: keyword=55, count=55, ratio=55
-Q6: keyword=49, count=31, ratio=36
-Q7: keyword=56, count=40, ratio=41
-Q8: keyword=74, count=39, ratio=39
-Q9: keyword=71, count=35, ratio=48
-Q10: keyword=39, count=19, ratio=22
+candidate_pool_rows=630
+qrels_rows=630
+per_query_counts:
+  Q1: 61
+  Q10: 60
+  Q2: 66
+  Q3: 67
+  Q4: 57
+  Q5: 63
+  Q6: 64
+  Q7: 68
+  Q8: 65
+  Q9: 59
+relevance_histogram:
+  rel=0: 100
+  rel=2: 365
+  rel=3: 165

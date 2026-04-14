@@ -1,7 +1,7 @@
 ===== BM25 INDEX (k1=1.5, b=0.75) =====
 
-Total documents: 100000
-Average doc length: 49.50
+Total documents: 99993
+Average doc length: 50.97
 
 Sample documents (first 3):
 Doc 0: decide eat aware go take hour begin end try multiple

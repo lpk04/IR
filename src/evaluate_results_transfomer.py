@@ -12,11 +12,12 @@ from config import (
 # QRELS
 # =========================
 QRELS_FILES = {
-    # "DEFAULT": RESULTS_DIR / "qrels.txt",
+    "DEFAULT": RESULTS_DIR / "qrels.txt",
     "KEYWORD": RESULTS_DIR / "qrels_keyword.txt",
     "COUNT":   RESULTS_DIR / "qrels_count.txt",
     "RATIO":   RESULTS_DIR / "qrels_ratio.txt",
 }
+
 
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -99,9 +100,9 @@ def evaluate_run(run_file, qrels_all, k=10):
 
     P, R, F, N = [], [], [], []
 
-    for qid in run:
-        retrieved = run[qid]
-        qrels = qrels_all.get(qid, {})
+    for qid in qrels_all:
+        qrels = qrels_all[qid]
+        retrieved = run.get(qid, [])
 
         relevant_set = {d for d, rel in qrels.items() if rel > 0}
 

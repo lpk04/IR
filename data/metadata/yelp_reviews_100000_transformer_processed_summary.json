@@ -1,0 +1,27 @@
+{
+  "input_file": "D:\\THTT\\IR-main\\IR\\data\\processed\\yelp_reviews_100000_transformer_processed.jsonl",
+  "dataset": "yelp_reviews_100000_transformer_processed",
+  "preferred_text_field": null,
+  "id_fields": [
+    "review_id"
+  ],
+  "records_seen": 99993,
+  "valid_records": 99993,
+  "malformed_records": 0,
+  "missing_text_records": 0,
+  "empty_text_records": 0,
+  "records_with_tokens": 99993,
+  "total_tokens": 4850663,
+  "max_token_count": 488,
+  "min_token_count": 1,
+  "rating_distribution": {
+    "3.0": 11361,
+    "5.0": 44391,
+    "4.0": 25333,
+    "1.0": 10921,
+    "2.0": 7987
+  },
+  "output_metadata_file": "D:\\THTT\\IR-main\\IR\\data\\metadata\\yelp_reviews_100000_transformer_processed_metadata.jsonl",
+  "output_summary_file": "D:\\THTT\\IR-main\\IR\\data\\metadata\\yelp_reviews_100000_transformer_processed_summary.json",
+  "average_token_count": 48.51
+}

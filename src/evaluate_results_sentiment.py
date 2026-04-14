@@ -6,34 +6,48 @@ from config import (
     RUNS_SEARCH_TFIDF_DIR,
     RUNS_SEARCH_BM25_DIR,
     RESULTS_DIR,
-    RUNS_RRF_DIR, # cái này khi nào kết hợp 3 cái mới dùng
+    RUNS_RRF_DIR,  # cái này khi nào kết hợp 3 cái mới dùng
 )
 
 # =========================
 # QRELS FILES
 # =========================
 QRELS_FILES = {
+    "DEFAULT": RESULTS_DIR / "qrels.txt",
     "KEYWORD": RESULTS_DIR / "qrels_keyword.txt",
     "COUNT":   RESULTS_DIR / "qrels_count.txt",
     "RATIO":   RESULTS_DIR / "qrels_ratio.txt",
 }
 
-RESULT_FILE = RESULTS_DIR / "evaluation_ndcg.txt"
-
+RESULT_FILE = RESULTS_DIR / "evaluation_sentiment.txt"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 # =========================
-# LOAD QRELS
+# LOAD QRELS (graded relevance)
+# qrels[qid][doc_id] = rel_grade
 # =========================
 def load_qrels(file_path):
-    qrels = defaultdict(set)
+    qrels = defaultdict(dict)
 
     with open(file_path, "r", encoding="utf-8") as f:
         for line in f:
-            qid, _, doc_id, rel = line.strip().split()
-            if int(rel) == 1:
-                qrels[qid].add(doc_id)
+            line = line.strip()
+            if not line:
+                continue
+
+            parts = line.split()
+            if len(parts) < 4:
+                continue
+
+            qid, _, doc_id, rel = parts[:4]
+
+            try:
+                rel = int(rel)
+            except ValueError:
+                continue
+
+            qrels[qid][doc_id] = rel
 
     return qrels
 
@@ -46,7 +60,14 @@ def load_run(file_path):
 
     with open(file_path, "r", encoding="utf-8") as f:
         for line in f:
-            parts = line.strip().split()
+            line = line.strip()
+            if not line:
+                continue
+
+            parts = line.split()
+            if len(parts) < 3:
+                continue
+
             qid = parts[0]
             doc_id = parts[2]
             run[qid].append(doc_id)
@@ -59,29 +80,35 @@ def load_run(file_path):
 # =========================
 def precision_at_k(retrieved, relevant, k=10):
     retrieved_k = retrieved[:k]
-    rel = sum(1 for doc in retrieved_k if doc in relevant)
-    return rel / k if k > 0 else 0
+    rel = sum(1 for doc in retrieved_k if relevant.get(doc, 0) > 0)
+    return rel / k if k > 0 else 0.0
 
 
 def recall_at_k(retrieved, relevant, k=10):
     retrieved_k = retrieved[:k]
-    rel = sum(1 for doc in retrieved_k if doc in relevant)
-    return rel / len(relevant) if relevant else 0
+    total_relevant = sum(1 for _, grade in relevant.items() if grade > 0)
+    if total_relevant == 0:
+        return 0.0
+
+    rel = sum(1 for doc in retrieved_k if relevant.get(doc, 0) > 0)
+    return rel / total_relevant
 
 
 def f1(p, r):
-    return 2 * p * r / (p + r) if (p + r) > 0 else 0
+    return 2 * p * r / (p + r) if (p + r) > 0 else 0.0
 
 
 # =========================
-# NDCG
+# NDCG (graded relevance)
+# DCG = sum((2^rel - 1) / log2(i + 1))
 # =========================
 def dcg_at_k(retrieved, relevant, k=10):
     dcg = 0.0
 
     for i, doc in enumerate(retrieved[:k], start=1):
-        rel = 1 if doc in relevant else 0
-        dcg += rel / math.log2(i + 1)
+        rel = relevant.get(doc, 0)
+        if rel > 0:
+            dcg += (2**rel - 1) / math.log2(i + 1)
 
     return dcg
 
@@ -89,13 +116,13 @@ def dcg_at_k(retrieved, relevant, k=10):
 def ndcg_at_k(retrieved, relevant, k=10):
     dcg = dcg_at_k(retrieved, relevant, k)
 
-    ideal_rels = [1] * min(len(relevant), k)
+    ideal_rels = sorted((rel for rel in relevant.values() if rel > 0), reverse=True)[:k]
     idcg = 0.0
 
     for i, rel in enumerate(ideal_rels, start=1):
-        idcg += rel / math.log2(i + 1)
+        idcg += (2**rel - 1) / math.log2(i + 1)
 
-    return dcg / idcg if idcg > 0 else 0
+    return dcg / idcg if idcg > 0 else 0.0
 
 
 # =========================
@@ -106,9 +133,9 @@ def evaluate_run(run_file, qrels, k=10):
 
     precisions, recalls, f1s, ndcgs = [], [], [], []
 
-    for qid in run:
-        retrieved = run[qid]
-        relevant = qrels.get(qid, set())
+    # Evaluate over qrels queries to avoid silently skipping judged queries
+    for qid, relevant in qrels.items():
+        retrieved = run.get(qid, [])
 
         p = precision_at_k(retrieved, relevant, k)
         r = recall_at_k(retrieved, relevant, k)
@@ -121,7 +148,7 @@ def evaluate_run(run_file, qrels, k=10):
         ndcgs.append(ndcg)
 
     if not precisions:
-        return 0, 0, 0, 0
+        return 0.0, 0.0, 0.0, 0.0
 
     return (
         sum(precisions) / len(precisions),
@@ -138,7 +165,7 @@ def evaluate_folder(folder, qrels, f):
     if not folder.exists():
         return
 
-    for file in os.listdir(folder):
+    for file in sorted(os.listdir(folder)):
         if file.endswith(".txt"):
             run_path = folder / file
 
@@ -158,7 +185,6 @@ def evaluate_folder(folder, qrels, f):
 # =========================
 def evaluate_all():
     with open(RESULT_FILE, "w", encoding="utf-8") as f:
-
         f.write("===== EVALUATION WITH NDCG =====\n\n")
 
         for name, qrels_path in QRELS_FILES.items():
@@ -175,10 +201,9 @@ def evaluate_all():
             f.write("---- BM25 ----\n\n")
             evaluate_folder(RUNS_SEARCH_BM25_DIR, qrels, f)
 
-            # thêm của ffr khi chạy khi k sài thì note lại
+            # thêm của rrf khi chạy khi k sài thì note lại
             f.write("---- RRF ----\n\n")
             evaluate_folder(RUNS_RRF_DIR, qrels, f)
-
 
             f.write("\n" + "=" * 60 + "\n\n")
 

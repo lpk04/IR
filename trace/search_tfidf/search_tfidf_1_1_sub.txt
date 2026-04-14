@@ -2,101 +2,101 @@
 
 Query: cheap sushi near me
 Clean: cheap sushi near
-  Rank 1: Doc 1886 | Score: 0.5230
-  Rank 2: Doc 50586 | Score: 0.4690
-  Rank 3: Doc 4558 | Score: 0.4522
-  Rank 4: Doc 442 | Score: 0.4488
-  Rank 5: Doc 48234 | Score: 0.4142
+  Rank 1: Doc 1886 | Score: 0.5171
+  Rank 2: Doc 50584 | Score: 0.4664
+  Rank 3: Doc 4557 | Score: 0.4485
+  Rank 4: Doc 442 | Score: 0.4452
+  Rank 5: Doc 48232 | Score: 0.4158
 
 --------------------------------------------------
 
 Query: bad service restaurant
 Clean: bad service restaurant
-  Rank 1: Doc 70504 | Score: 0.6149
-  Rank 2: Doc 74623 | Score: 0.5806
-  Rank 3: Doc 45944 | Score: 0.4525
-  Rank 4: Doc 50352 | Score: 0.4376
-  Rank 5: Doc 53315 | Score: 0.4295
+  Rank 1: Doc 70500 | Score: 0.6148
+  Rank 2: Doc 74618 | Score: 0.5664
+  Rank 3: Doc 45942 | Score: 0.4525
+  Rank 4: Doc 50350 | Score: 0.4375
+  Rank 5: Doc 53313 | Score: 0.4297
 
 --------------------------------------------------
 
 Query: friendly staff cafe
 Clean: friendly staff cafe
-  Rank 1: Doc 93071 | Score: 0.5731
-  Rank 2: Doc 7742 | Score: 0.5212
-  Rank 3: Doc 98828 | Score: 0.4726
-  Rank 4: Doc 99476 | Score: 0.4720
-  Rank 5: Doc 20389 | Score: 0.4576
+  Rank 1: Doc 93064 | Score: 0.5649
+  Rank 2: Doc 7741 | Score: 0.5212
+  Rank 3: Doc 99469 | Score: 0.4751
+  Rank 4: Doc 20387 | Score: 0.4577
+  Rank 5: Doc 43358 | Score: 0.4324
 
 --------------------------------------------------
 
 Query: best pizza in town
 Clean: best pizza town
-  Rank 1: Doc 42237 | Score: 0.7326
-  Rank 2: Doc 79744 | Score: 0.5993
-  Rank 3: Doc 91968 | Score: 0.5919
-  Rank 4: Doc 93244 | Score: 0.5879
-  Rank 5: Doc 89863 | Score: 0.5862
+  Rank 1: Doc 42235 | Score: 0.7326
+  Rank 2: Doc 79739 | Score: 0.5994
+  Rank 3: Doc 91961 | Score: 0.5919
+  Rank 4: Doc 93237 | Score: 0.5879
+  Rank 5: Doc 89856 | Score: 0.5852
 
 --------------------------------------------------
 
 Query: clean hotel room
 Clean: clean hotel room
-  Rank 1: Doc 52177 | Score: 0.6439
+  Rank 1: Doc 52175 | Score: 0.6439
   Rank 2: Doc 1049 | Score: 0.6437
-  Rank 3: Doc 4698 | Score: 0.5887
-  Rank 4: Doc 28063 | Score: 0.5621
-  Rank 5: Doc 20494 | Score: 0.5308
+  Rank 3: Doc 4697 | Score: 0.5886
+  Rank 4: Doc 28061 | Score: 0.5620
+  Rank 5: Doc 31403 | Score: 0.5228
 
 --------------------------------------------------
 
 Query: I am looking for a cheap sushi restaurant with fresh ingredients
 Clean: look cheap sushi restaurant fresh ingredient
-  Rank 1: Doc 51273 | Score: 0.4987
-  Rank 2: Doc 50586 | Score: 0.4405
-  Rank 3: Doc 1886 | Score: 0.4377
-  Rank 4: Doc 48023 | Score: 0.4082
-  Rank 5: Doc 90081 | Score: 0.3946
+  Rank 1: Doc 51271 | Score: 0.4962
+  Rank 2: Doc 50584 | Score: 0.4381
+  Rank 3: Doc 1886 | Score: 0.4327
+  Rank 4: Doc 48021 | Score: 0.4081
+  Rank 5: Doc 90074 | Score: 0.3947
 
 --------------------------------------------------
 
 Query: The service at this restaurant was really bad and disappointing
 Clean: service restaurant really bad disappointing
-  Rank 1: Doc 29660 | Score: 0.5260
-  Rank 2: Doc 98532 | Score: 0.4905
-  Rank 3: Doc 26533 | Score: 0.4290
-  Rank 4: Doc 68528 | Score: 0.4230
-  Rank 5: Doc 3004 | Score: 0.4138
+  Rank 1: Doc 29658 | Score: 0.5266
+  Rank 2: Doc 26531 | Score: 0.4297
+  Rank 3: Doc 68524 | Score: 0.4237
+  Rank 4: Doc 3003 | Score: 0.4143
+  Rank 5: Doc 70500 | Score: 0.3831
 
 --------------------------------------------------
 
 Query: I want to find a cafe with very friendly staff and good coffee
 Clean: want find cafe friendly staff good coffee
-  Rank 1: Doc 32243 | Score: 0.4704
-  Rank 2: Doc 93071 | Score: 0.4504
-  Rank 3: Doc 99272 | Score: 0.4227
-  Rank 4: Doc 78205 | Score: 0.4193
-  Rank 5: Doc 97984 | Score: 0.4120
+  Rank 1: Doc 32241 | Score: 0.4576
+  Rank 2: Doc 93064 | Score: 0.4440
+  Rank 3: Doc 99265 | Score: 0.4228
+  Rank 4: Doc 78200 | Score: 0.4193
+  Rank 5: Doc 7741 | Score: 0.4107
 
 --------------------------------------------------
 
 Query: This place has the best pizza I have ever tried in town
 Clean: place best pizza ever try town
-  Rank 1: Doc 91968 | Score: 0.6098
-  Rank 2: Doc 42237 | Score: 0.5875
-  Rank 3: Doc 79744 | Score: 0.5656
-  Rank 4: Doc 89863 | Score: 0.5178
-  Rank 5: Doc 51046 | Score: 0.4879
+  Rank 1: Doc 91961 | Score: 0.6098
+  Rank 2: Doc 42235 | Score: 0.5875
+  Rank 3: Doc 79739 | Score: 0.5657
+  Rank 4: Doc 89856 | Score: 0.5169
+  Rank 5: Doc 51044 | Score: 0.4879
 
 --------------------------------------------------
 
 Query: I love eating spicy noodles with strong flavor and rich broth
 Clean: love eating spicy noodle strong flavor rich broth
-  Rank 1: Doc 32484 | Score: 0.4769
-  Rank 2: Doc 86538 | Score: 0.3500
-  Rank 3: Doc 75699 | Score: 0.3457
-  Rank 4: Doc 69053 | Score: 0.3322
-  Rank 5: Doc 85156 | Score: 0.3302
+  Rank 1: Doc 32482 | Score: 0.4455
+  Rank 2: Doc 86531 | Score: 0.3468
+  Rank 3: Doc 75694 | Score: 0.3454
+  Rank 4: Doc 69049 | Score: 0.3347
+  Rank 5: Doc 85149 | Score: 0.3292
 
 --------------------------------------------------
 

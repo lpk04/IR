@@ -20,10 +20,15 @@ RUN_FOLDERS = {
 }
 
 DEFAULT_QRELS_FILES = {
+    "DEFAULT": RESULTS_DIR / "qrels.txt",
     "KEYWORD": RESULTS_DIR / "qrels_keyword.txt",
-    "COUNT": RESULTS_DIR / "qrels_count.txt",
-    "RATIO": RESULTS_DIR / "qrels_ratio.txt",
+    "COUNT":   RESULTS_DIR / "qrels_count.txt",
+    "RATIO":   RESULTS_DIR / "qrels_ratio.txt",
 }
+
+
+
+DEFAULT_QUERIES_FILE = "queries.txt"
 
 
 # =========================
@@ -34,10 +39,44 @@ def load_qrels(path):
 
     with open(path, "r", encoding="utf-8") as f:
         for line in f:
-            qid, _, doc_id, rel = line.strip().split()
+            parts = line.strip().split()
+            if len(parts) < 4:
+                continue
+            qid, _, doc_id, rel = parts[:4]
             qrels[qid][doc_id] = int(rel)
 
     return qrels
+
+
+# =========================
+# LOAD QUERIES
+# =========================
+def load_queries(path):
+    """
+    Load query IDs from queries.txt.
+
+    Expected formats supported:
+      - qid<TAB>query text
+      - qid query text
+      - qid only
+
+    Returns:
+      list[str] of qids in file order
+    """
+    query_ids = []
+
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            raw = line.strip()
+            if not raw:
+                continue
+
+            parts = raw.split(maxsplit=1)
+            qid = parts[0].strip()
+            if qid:
+                query_ids.append(qid)
+
+    return query_ids
 
 
 # =========================
@@ -64,16 +103,16 @@ def load_run(path):
 # =========================
 def precision_at_k(retrieved, relevant, k=10):
     rel = sum(1 for d in retrieved[:k] if d in relevant)
-    return rel / k if k else 0
+    return rel / k if k else 0.0
 
 
 def recall_at_k(retrieved, relevant, k=10):
     rel = sum(1 for d in retrieved[:k] if d in relevant)
-    return rel / len(relevant) if relevant else 0
+    return rel / len(relevant) if relevant else 0.0
 
 
 def f1(p, r):
-    return 2 * p * r / (p + r) if (p + r) else 0
+    return 2 * p * r / (p + r) if (p + r) else 0.0
 
 
 def dcg(rels):
@@ -87,19 +126,18 @@ def ndcg_at_k(retrieved, qrels, k=10):
     ideal = sorted(qrels.values(), reverse=True)[:k]
     idcg = dcg(ideal)
 
-    return dcg_val / idcg if idcg > 0 else 0
+    return dcg_val / idcg if idcg > 0 else 0.0
 
 
 # =========================
 # EVALUATE
 # =========================
-def evaluate(run, qrels_all):
+def evaluate(run, qrels_all, query_ids):
     p_scores, r_scores, f_scores, n_scores = [], [], [], []
 
-    for qid in run:
-        retrieved = run[qid]
+    for qid in query_ids:
+        retrieved = run.get(qid, [])
         qrels = qrels_all.get(qid, {})
-
         relevant = {doc_id for doc_id, rel in qrels.items() if rel > 0}
 
         p = precision_at_k(retrieved, relevant)
@@ -113,7 +151,7 @@ def evaluate(run, qrels_all):
         n_scores.append(n)
 
     if not p_scores:
-        return 0, 0, 0, 0
+        return 0.0, 0.0, 0.0, 0.0
 
     return (
         sum(p_scores) / len(p_scores),
@@ -154,6 +192,12 @@ def parse_args():
         help="Output evaluation file path.",
     )
     parser.add_argument(
+        "--queries",
+        type=str,
+        default=str(DEFAULT_QUERIES_FILE),
+        help="Path to queries.txt used to determine which queries to evaluate.",
+    )
+    parser.add_argument(
         "--qrels",
         action="append",
         default=[],
@@ -186,11 +230,21 @@ def main():
     result_file = Path(args.output)
     result_file.parent.mkdir(parents=True, exist_ok=True)
 
+    queries_file = Path(args.queries)
+    if not queries_file.exists():
+        raise FileNotFoundError(f"queries file not found: {queries_file}")
+
+    query_ids = load_queries(queries_file)
+    if not query_ids:
+        raise ValueError(f"No query IDs found in {queries_file}")
+
     qrels_files = resolve_qrels_files(args.qrels)
     run_files = collect_run_files()
 
     with open(result_file, "w", encoding="utf-8") as f:
-        f.write("===== ALL RUN COMPARISON =====\n\n")
+        f.write("===== ALL RUN COMPARISON =====\n")
+        f.write(f"Queries file: {queries_file}\n")
+        f.write(f"Total queries: {len(query_ids)}\n\n")
 
         if not run_files:
             f.write("No run files found.\n")
@@ -208,7 +262,7 @@ def main():
 
             for system_name, run_path in run_files:
                 run = load_run(run_path)
-                p, r, f1_score, ndcg = evaluate(run, qrels)
+                p, r, f1_score, ndcg = evaluate(run, qrels, query_ids)
                 results.append((system_name, run_path.name, p, r, f1_score, ndcg))
 
             results.sort(key=lambda x: x[5], reverse=True)
