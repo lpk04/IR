@@ -110,7 +110,7 @@ The pipeline includes:
 ## 6. Lauch app
 
 ```bash
-py app\app.py
+py src\tools\pipepline_app.py
 ```
 
 ---
