@@ -1,71 +1,122 @@
--setup file python setup_project.py
--config python config.py
--tạo mt python -m venv .venv
--bat mt .venv\Scripts\activate
--cài nltk 
-bash--> python--> 
-import nltk
-nltk.download('punkt')
-nltk.download('punkt_tab')
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
-nltk.download('averaged_perceptron_tagger_eng')
--->exit() 
---cài thư viện pip install -r requirements.txt
--tải dl
--chuẩn bị dl prepare_data.py 
+# Information Retrieval (IR) Pipeline
 
--index_tfidf.py 
-python src/index_tfidf.py --ngram 11 --sublinear false
-python src/index_tfidf.py --ngram 11 --sublinear true
-python src/index_tfidf.py --ngram 12 --sublinear false
-python src/index_tfidf.py --ngram 12 --sublinear true
+This repository implements an end-to-end Information Retrieval system supporting lexical, semantic, and hybrid retrieval approaches.
 
--index_bm25
-python src/index_bm25.py --k1 1.2 --b 0.75
-python src/index_bm25.py --k1 1.5 --b 0.75
-python src/index_bm25.py --k1 2.0 --b 0.75
-python src/index_bm25.py --k1 5.0 --b 0.75
+---
 
--search_tfidf.py
-python src/search_tfidf.py --ngram 11 --sublinear false
-python src/search_tfidf.py --ngram 11 --sublinear true
-python src/search_tfidf.py --ngram 12 --sublinear false
-python src/search_tfidf.py --ngram 12 --sublinear true
+## 1. Installation
 
--search_bm25
-python src/search_bm25.py --k1 1.2 --b 0.75
-python src/search_bm25.py --k1 1.5 --b 0.75
-python src/search_bm25.py --k1 2.0 --b 0.75
-python src/search_bm25.py --k1 5.0 --b 0.75
+Install required dependencies:
 
--generate_queries.py
-điều kiện
-+if common >= max(2, int(0.5 * len(q_tokens))):
-    rel = 1
-match số từ vd 3 từ phải match 2
+```bash
+pip install -r requirements.txt
+```
 
-+ratio = common / len(q_tokens)
+Setup virtual enviroment:
+```bash
+py -m venv .venv
+.venv\Scripts\activate
+```
+or
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
 
-if ratio >= 0.7:
-    rel = 1
-match theo %
+---
 
+## 2. Download NLTK Resources
 
--evaluate_results.py 
+Before running preprocessing steps, download required NLTK packages:
 
+```bash
+py download_nltk.py
+```
 
--search_bm25_sentiment.py --k1 1.2 --b 0.75
-so sánh các mô hình khi thêm sentiment vào
+---
 
+## 3. Data Preprocessing Pipeline
 
-python src/rerank_bm25_sentiment.py --k1 1.2 --b 0.75 --alpha 0.0
-python src/rerank_bm25_sentiment.py --k1 1.2 --b 0.75 --alpha 0.2
-python src/rerank_bm25_sentiment.py --k1 1.2 --b 0.75 --alpha 0.5
-python src/rerank_bm25_sentiment.py --k1 1.2 --b 0.75 --alpha 1
+Run the following scripts in order:
 
+### 3.1 Convert Raw Yelp Data
 
-git add .
-git commit -m "update"
-git push
+```bash
+py src\change_yelp_raw.py
+```
+
+### 3.2 Build Candidate Pool
+
+Construct document candidate pool for retrieval tasks:
+
+```bash
+py src\build_candidate_pool.py
+```
+
+### 3.3 Generate Qrels (TREC format)
+
+Create relevance judgments for evaluation:
+
+```bash
+py src\generate_qrels.py
+```
+
+---
+
+## 4. Retrieval Pipelines
+
+### 4.1 Lexical Retrieval (BM25 / TF-IDF)
+
+```bash
+py src\tools\pipeline_lexical.py
+```
+
+### 4.2 Semantic Retrieval (Sentence Transformers)
+
+Uses embedding models such as:
+
+* all-MiniLM-L6-v2
+* ms-marco-MiniLM-L-6-v2
+
+Run:
+
+```bash
+py src\tools\pipeline_semantic.py
+```
+
+### 4.3 Hybrid Retrieval
+
+Combines lexical and semantic ranking methods:
+
+```bash
+py src\tools\pipeline_hybrid.py
+```
+
+---
+
+## 5. System Overview
+
+The pipeline includes:
+
+* Raw data transformation (Yelp format normalization)
+* Candidate pool construction
+* Qrels generation (TREC standard)
+* Lexical retrieval (BM25 / TF-IDF)
+* Semantic retrieval (Sentence Transformers)
+* Hybrid fusion retrieval
+
+---
+
+## 6. Notes
+
+* Ensure preprocessing steps are executed before running retrieval pipelines.
+* Semantic and hybrid pipelines require SentenceTransformer models.
+* Output formats are designed for IR evaluation workflows.
+
+---
+
+## 7. Environment
+
+* Python 3.8+
+* Recommended: CUDA-enabled GPU for embedding generation
+* Minimum
